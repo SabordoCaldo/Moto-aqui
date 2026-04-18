@@ -17,12 +17,12 @@ html, body{
 CONTAINER (CENTRO DA TELA)
 ===========================*/
 
-container{
+.container{
   display:flex;
   justify-content:center;
-  align-items:flex-start;   /* 👈 ESSA LINHA RESOLVE */
+  align-items:flex-start;   /* topo, não centro */
   min-height:100vh;
-  padding-top:10px;         /* 👈 controla distância do topo */
+  padding:15px;             /* espaço igual em todos os lados */
 }
 
 
@@ -32,14 +32,15 @@ CARD CENTRAL
 
 .card{
   width:100%;
-  max-width:380px;
-  background:#ffffff;        /* fundo branco */
+  max-width:380px;          /* largura padrão mobile */
+  margin:0 auto;            /* centralização perfeita */
+
+  background:#ffffff;
   border-radius:25px;
-  padding:10px 20px 25px;
+  padding:15px 20px 25px;   /* topo | lados | baixo */
 
-  border:1px solid #e5e5e5;  /* leve contorno */
+  border:1px solid #e5e5e5;
 }
-
 
 /*===========================
 LOGO
