@@ -39,5 +39,12 @@ p{
 <h1>Moto Aqui</h1>
 <p>App de mobilidade urbana</p>
 
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js')
+    .then(() => console.log('SW registrado'));
+}
+</script>
+
 </body>
 </html>
