@@ -5,53 +5,59 @@ GERAL
 body{
   margin:0;
   font-family:Arial;
-  background:#ffffff;
+  background:#0f172a;
+  color:#fff;
 }
 
 
 /*===========================
-LOGIN
+CONTAINER
 ===========================*/
 
-#login{
-  width:100%;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
+.container{
+  max-width:380px;
+  margin:0 auto;
   padding:20px;
 }
 
 
 /*===========================
-TOPO
+LOGO
 ===========================*/
 
-.topo{
-  text-align:center;
-  margin-top:40px;
+.logo-box{
+  width:180px;
+  height:180px;
+  margin:30px auto 15px;
+  background:#fff;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden; /* 👈 ISSO RESOLVE A LOGO SAINDO */
 }
 
-.topo img{
-  width:90px;
-}
-
-.topo p{
-  margin-top:8px;
-  font-size:14px;
-  color:#777;
+.logo-box img{
+  width:80%; /* 👈 DIMINUI PRA NÃO CORTAR */
+  height:auto;
 }
 
 
 /*===========================
-TITULO
+TEXTOS
 ===========================*/
 
-h1{
-  margin-top:25px;
-  margin-bottom:10px;
-  font-size:26px;
+.sub{
   text-align:center;
+  color:#ccc;
+  font-size:14px;
+}
+
+h1{
+  text-align:center;
+  margin-top:5px;
+  font-size:28px;
+  font-weight:bold;
 }
 
 
@@ -60,36 +66,63 @@ FORM
 ===========================*/
 
 .form{
-  width:90%;
-  max-width:350px;
-  margin-top:20px;
+  margin-top:25px;
 }
 
 
 /*===========================
-INPUTS
+LABEL
+===========================*/
+
+label{
+  font-size:14px;
+  margin-bottom:5px;
+  display:block;
+}
+
+
+/*===========================
+INPUT
 ===========================*/
 
 .input-box{
+  background:#111;
+  border:1px solid #333;
+  border-radius:12px;
+  padding:15px;
+  margin-bottom:15px;
   display:flex;
   align-items:center;
-  background:#f7f7f7;
-  border-radius:12px;
-  padding:14px;
-  margin-bottom:15px;
-}
-
-.input-box span{
-  font-size:18px;
 }
 
 .input-box input{
-  border:none;
+  width:100%;
   background:none;
+  border:none;
   outline:none;
-  flex:1;
-  margin-left:10px;
+  color:#fff;
   font-size:16px;
+}
+
+.input-box span{
+  margin-left:10px;
+}
+
+
+/*===========================
+OPÇÕES
+===========================*/
+
+.opcoes{
+  display:flex;
+  justify-content:space-between;
+  font-size:13px;
+  margin-bottom:15px;
+}
+
+.opcoes a{
+  color:#ccc;
+  text-decoration:none;
 }
 
 
@@ -104,7 +137,7 @@ BOTÃO PRINCIPAL
   border-radius:12px;
   background:#FFD600;
   color:#000;
-  font-size:17px;
+  font-size:18px;
   font-weight:bold;
   margin-top:10px;
 }
@@ -116,13 +149,12 @@ CADASTRO
 
 .cadastro{
   text-align:center;
-  margin-top:18px;
-  color:#777;
+  margin-top:15px;
   font-size:14px;
 }
 
 .cadastro b{
-  color:#000;
+  color:#fff;
 }
 
 
@@ -133,32 +165,32 @@ OU
 .ou{
   display:flex;
   align-items:center;
-  margin:25px 0;
+  margin:20px 0;
 }
 
 .ou span{
   flex:1;
   height:1px;
-  background:#ddd;
+  background:#333;
 }
 
 .ou p{
   margin:0 10px;
-  color:#777;
-  font-size:14px;
+  font-size:13px;
+  color:#aaa;
 }
 
 
 /*===========================
-BOTÃO GMAIL
+GMAIL
 ===========================*/
 
 .gmail{
   width:100%;
   padding:16px;
-  border:none;
   border-radius:12px;
-  background:#000;
+  background:#111;
   color:#fff;
-  font-size:16px;
+  border:1px solid #333;
+  font-size:15px;
 }
