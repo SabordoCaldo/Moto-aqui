@@ -1,16 +1,14 @@
-/*==========================
+/*===========================
 GERAL
 ===========================*/
 
 body{
   margin:0;
   font-family:Arial;
-  background:#fff;
-  text-align:center;
+  background:#ffffff;
 }
 
-
-/*==========================
+/*===========================
 SPLASH
 ===========================*/
 
@@ -20,7 +18,6 @@ SPLASH
   display:flex;
   justify-content:center;
   align-items:center;
-  background:#ffffff;
 }
 
 #splash img{
@@ -28,93 +25,110 @@ SPLASH
   max-width:300px;
 }
 
-
-/*==========================
+/*===========================
 LOGIN
 ===========================*/
 
 #login{
+  width:100%;
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
   padding:20px;
 }
 
-
-/*==========================
+/*===========================
 TOPO
 ===========================*/
 
+.topo{
+  text-align:center;
+  margin-top:20px;
+}
+
 .topo img{
-  width:80px;
+  width:100px;
 }
 
 .topo p{
-  color:#666;
+  color:#777;
   font-size:14px;
   margin-top:5px;
 }
 
-
-/*==========================
+/*===========================
 TITULO
 ===========================*/
 
 h1{
-  margin:20px 0;
+  margin-top:20px;
+  font-size:26px;
 }
 
-
-/*==========================
-CAMPOS
+/*===========================
+FORM
 ===========================*/
 
-.campo{
+.form{
+  width:90%;
+  max-width:350px;
+  margin-top:20px;
+}
+
+/*===========================
+INPUT
+===========================*/
+
+.input-box{
   display:flex;
   align-items:center;
   background:#f2f2f2;
-  padding:15px;
-  border-radius:10px;
-  margin:10px 0;
+  border-radius:12px;
+  padding:12px;
+  margin-bottom:15px;
 }
 
-.campo input{
+.input-box input{
   border:none;
   background:none;
-  flex:1;
-  margin:0 10px;
   outline:none;
+  flex:1;
   font-size:16px;
+  margin-left:10px;
 }
 
-
-/*==========================
-BOTÃO
+/*===========================
+BOTÃO PRINCIPAL
 ===========================*/
 
 .btn{
   width:100%;
   padding:15px;
-  background:#FFD600;
   border:none;
-  border-radius:10px;
-  font-size:18px;
-  margin-top:15px;
+  border-radius:12px;
+  background:#FFD700;
+  color:#000;
+  font-size:16px;
+  font-weight:bold;
+  margin-top:10px;
 }
 
-
-/*==========================
+/*===========================
 CADASTRO
 ===========================*/
 
 .cadastro{
+  text-align:center;
   margin-top:15px;
-  color:#666;
+  color:#777;
 }
 
 .cadastro b{
   color:#000;
 }
 
-
-/*==========================
+/*===========================
 OU
 ===========================*/
 
@@ -132,19 +146,19 @@ OU
 
 .ou p{
   margin:0 10px;
-  color:#666;
+  color:#777;
 }
 
-
-/*==========================
+/*===========================
 GMAIL
 ===========================*/
 
 .gmail{
   width:100%;
   padding:15px;
+  border:none;
+  border-radius:12px;
   background:#000;
   color:#fff;
-  border:none;
-  border-radius:10px;
+  font-size:16px;
 }
