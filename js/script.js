@@ -1,8 +1,5 @@
 /*===========================
-SPLASH TIME
+SCRIPT
 ===========================*/
 
-setTimeout(() => {
-  document.getElementById("splash").style.display = "none";
-  document.getElementById("login").style.display = "block";
-}, 4000);
+// vazio por enquanto
