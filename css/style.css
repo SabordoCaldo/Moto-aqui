@@ -69,7 +69,7 @@ TEXTOS
 
 .sub{
   text-align:center;
-  color:#ccc;
+  color:#FFD600;
   font-size:14px;
   margin-bottom:5px;
 }
@@ -141,7 +141,7 @@ OPÇÕES
 }
 
 .opcoes a{
-  color:#ccc;
+  color:#FFD600;
   text-decoration:none;
 }
 
@@ -174,7 +174,7 @@ CADASTRO
 }
 
 .cadastro b{
-  color:#fff;
+  color:#FFD600;
 }
 
 
