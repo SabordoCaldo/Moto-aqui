@@ -33,9 +33,11 @@ CARD CENTRAL
 .card{
   width:100%;
   max-width:380px;
-  background:#1a1a1a;
+  background:#ffffff;        /* fundo branco */
   border-radius:25px;
   padding:25px 20px;
+
+  border:1px solid #e5e5e5;  /* leve contorno */
 }
 
 
