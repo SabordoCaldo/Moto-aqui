@@ -21,7 +21,7 @@ CONTAINER (CENTRO DA TELA)
   display:flex;
   justify-content:center;
   align-items:flex-start;   /* 👈 volta pro topo */
-  min-height:100vh;
+  min-height:90vh;
   padding:15px;
 }
 
