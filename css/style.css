@@ -20,11 +20,12 @@ SPLASH
   display:flex;
   justify-content:center;
   align-items:center;
+  background:#ffffff;
 }
 
 #splash img{
   width:60%;
-  max-width:260px;
+  max-width:300px;
 }
 
 
