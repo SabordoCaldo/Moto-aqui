@@ -20,11 +20,10 @@ CONTAINER (CENTRO DA TELA)
 .container{
   display:flex;
   justify-content:center;
-  align-items:center;   /* 👈 centraliza verticalmente */
+  align-items:flex-start;   /* 👈 volta pro topo */
   min-height:100vh;
   padding:15px;
 }
-
 
 /*===========================
 CARD CENTRAL
