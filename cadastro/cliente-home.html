@@ -5,9 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Área do Cliente</title>
+<title>Cadastro Cliente</title>
 
-<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="../css/style.css">
 
 </head>
 
@@ -17,23 +17,57 @@
 
   <div class="card">
 
-    <div class="logo-box">
-      <img src="assets/logo.png">
-    </div>
-
-    <p class="sub">App de mobilidade urbana</p>
-    <h1>CLIENTE</h1>
+    <h1>CADASTRO CLIENTE</h1>
 
     <div class="form">
 
-      <p class="cadastro">Bem-vindo ao app 👋</p>
+      <!-- FOTO -->
+      <div style="text-align:center; margin-bottom:20px;">
+        <input type="file" id="foto" accept="image/*">
+      </div>
 
-      <button class="btn">Pedir Corrida</button>
+      <!-- NOME -->
+      <label>Nome</label>
+      <div class="input-box">
+        <input type="text" id="nome" placeholder="Seu nome">
+      </div>
 
-      <button class="gmail">Histórico</button>
+      <!-- TELEFONE -->
+      <label>Telefone</label>
+      <div class="input-box">
+        <input type="text" id="telefone" placeholder="Seu telefone">
+      </div>
 
+      <!-- ENDEREÇO -->
+      <label>Endereço</label>
+      <div class="input-box">
+        <input type="text" id="endereco" placeholder="Seu endereço">
+      </div>
+
+      <!-- EMAIL -->
+      <label>E-mail</label>
+      <div class="input-box">
+        <input type="email" id="email" placeholder="Seu e-mail">
+      </div>
+
+      <!-- SENHA -->
+      <label>Senha</label>
+      <div class="input-box">
+        <input type="password" id="senha" placeholder="Senha">
+      </div>
+
+      <!-- CONFIRMAR -->
+      <label>Confirmar Senha</label>
+      <div class="input-box">
+        <input type="password" id="confirmarSenha" placeholder="Confirmar senha">
+      </div>
+
+      <!-- BOTÃO -->
+      <button class="btn" onclick="cadastrarCliente()">Cadastrar</button>
+
+      <!-- VOLTAR -->
       <p class="cadastro">
-        <a href="index.html">Sair</a>
+        <a href="escolha.html">Voltar</a>
       </p>
 
     </div>
@@ -41,6 +75,8 @@
   </div>
 
 </div>
+
+<script src="../js/script.js"></script>
 
 </body>
 </html>
