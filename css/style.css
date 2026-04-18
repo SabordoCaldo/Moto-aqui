@@ -20,9 +20,9 @@ CONTAINER (CENTRO DA TELA)
 .container{
   display:flex;
   justify-content:center;
-  align-items:flex-start;   /* topo, não centro */
+  align-items:center;   /* 👈 centraliza verticalmente */
   min-height:100vh;
-  padding:15px;             /* espaço igual em todos os lados */
+  padding:15px;
 }
 
 
