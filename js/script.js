@@ -1,3 +1,8 @@
+//==========================
+// SPLASH → LOGIN
+//==========================
+
 setTimeout(() => {
-  // por enquanto não faz nada depois dos 2 segundos
+  document.getElementById("splash").style.display = "none";
+  document.getElementById("login").style.display = "block";
 }, 2000);
