@@ -1,0 +1,17 @@
+body{
+  margin:0;
+}
+
+/* SPLASH TELA CHEIA */
+#splash{
+  width:100%;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:#ffffff;
+}
+
+#splash img{
+  width:250px;
+}
