@@ -8,6 +8,7 @@ body{
   background:#ffffff;
 }
 
+
 /*===========================
 SPLASH
 ===========================*/
@@ -25,6 +26,7 @@ SPLASH
   max-width:300px;
 }
 
+
 /*===========================
 LOGIN
 ===========================*/
@@ -38,33 +40,38 @@ LOGIN
   padding:20px;
 }
 
+
 /*===========================
 TOPO
 ===========================*/
 
 .topo{
   text-align:center;
-  margin-top:20px;
+  margin-top:40px;
 }
 
 .topo img{
-  width:100px;
+  width:90px;
 }
 
 .topo p{
-  color:#777;
+  margin-top:8px;
   font-size:14px;
-  margin-top:5px;
+  color:#777;
 }
+
 
 /*===========================
 TITULO
 ===========================*/
 
 h1{
-  margin-top:20px;
+  margin-top:25px;
+  margin-bottom:10px;
   font-size:26px;
+  text-align:center;
 }
+
 
 /*===========================
 FORM
@@ -76,17 +83,22 @@ FORM
   margin-top:20px;
 }
 
+
 /*===========================
-INPUT
+INPUTS
 ===========================*/
 
 .input-box{
   display:flex;
   align-items:center;
-  background:#f2f2f2;
+  background:#f7f7f7;
   border-radius:12px;
-  padding:12px;
+  padding:14px;
   margin-bottom:15px;
+}
+
+.input-box span{
+  font-size:18px;
 }
 
 .input-box input{
@@ -94,9 +106,10 @@ INPUT
   background:none;
   outline:none;
   flex:1;
-  font-size:16px;
   margin-left:10px;
+  font-size:16px;
 }
+
 
 /*===========================
 BOTÃO PRINCIPAL
@@ -104,15 +117,16 @@ BOTÃO PRINCIPAL
 
 .btn{
   width:100%;
-  padding:15px;
+  padding:16px;
   border:none;
   border-radius:12px;
-  background:#FFD700;
+  background:#FFD600;
   color:#000;
-  font-size:16px;
+  font-size:17px;
   font-weight:bold;
   margin-top:10px;
 }
+
 
 /*===========================
 CADASTRO
@@ -120,13 +134,15 @@ CADASTRO
 
 .cadastro{
   text-align:center;
-  margin-top:15px;
+  margin-top:18px;
   color:#777;
+  font-size:14px;
 }
 
 .cadastro b{
   color:#000;
 }
+
 
 /*===========================
 OU
@@ -135,27 +151,29 @@ OU
 .ou{
   display:flex;
   align-items:center;
-  margin:20px 0;
+  margin:25px 0;
 }
 
 .ou span{
   flex:1;
   height:1px;
-  background:#ccc;
+  background:#ddd;
 }
 
 .ou p{
   margin:0 10px;
   color:#777;
+  font-size:14px;
 }
 
+
 /*===========================
-GMAIL
+BOTÃO GMAIL
 ===========================*/
 
 .gmail{
   width:100%;
-  padding:15px;
+  padding:16px;
   border:none;
   border-radius:12px;
   background:#000;
