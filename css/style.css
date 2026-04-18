@@ -46,9 +46,10 @@ LOGO
 ===========================*/
 
 .logo-box{
-  width:150px;
-  height:150px;
-  margin:0 auto 15px;
+.logo-box{
+  width:170px;
+  height:170px;
+  margin:0 auto 10px;
   background:#fff;
   border-radius:20px;
   display:flex;
@@ -58,7 +59,7 @@ LOGO
 }
 
 .logo-box img{
-  width:75%;
+  width:80%;
   height:auto;
 }
 
@@ -77,10 +78,9 @@ TEXTOS
 
 h1{
   text-align:center;
-  font-size:26px;
+  font-size:30px;   /* 👈 aumenta o BEM-VINDO */
   margin-bottom:20px;
 }
-
 
 /*===========================
 FORM
@@ -137,8 +137,19 @@ OPÇÕES
 .opcoes{
   display:flex;
   justify-content:space-between;
-  font-size:13px;
+  align-items:center;   /* 👈 alinha tudo na mesma altura */
+  font-size:14px;
   margin-bottom:15px;
+}
+
+.opcoes label{
+  display:flex;
+  align-items:center;   /* 👈 alinha checkbox + texto */
+  gap:5px;
+}
+
+.opcoes input{
+  margin:0;  /* 👈 remove desalinhamento padrão */
 }
 
 .opcoes a{
@@ -171,11 +182,12 @@ CADASTRO
 .cadastro{
   text-align:center;
   margin-top:15px;
-  font-size:14px;
+  font-size:16px;   /* 👈 maior */
 }
 
 .cadastro b{
   color:#FFD600;
+  font-size:16px;   /* 👈 maior */
 }
 
 
