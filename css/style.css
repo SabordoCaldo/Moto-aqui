@@ -1,25 +1,149 @@
 /*==========================
-SPLASH (TELA INICIAL)
+GERAL
 ===========================*/
 
-#splash{
-  width: 100%;
-  height: 100vh;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  background: #ffffff;
+body{
+  margin:0;
+  font-family:Arial;
+  background:#fff;
+  text-align:center;
 }
 
 
 /*==========================
-LOGO RESPONSIVA
+SPLASH
 ===========================*/
 
+#splash{
+  width:100%;
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
 #splash img{
-  width: 60%;
-  max-width: 260px;
-  height: auto;
+  width:60%;
+  max-width:260px;
+}
+
+
+/*==========================
+LOGIN
+===========================*/
+
+#login{
+  padding:20px;
+}
+
+
+/*==========================
+TOPO
+===========================*/
+
+.topo img{
+  width:80px;
+}
+
+.topo p{
+  color:#666;
+  font-size:14px;
+  margin-top:5px;
+}
+
+
+/*==========================
+TITULO
+===========================*/
+
+h1{
+  margin:20px 0;
+}
+
+
+/*==========================
+CAMPOS
+===========================*/
+
+.campo{
+  display:flex;
+  align-items:center;
+  background:#f2f2f2;
+  padding:15px;
+  border-radius:10px;
+  margin:10px 0;
+}
+
+.campo input{
+  border:none;
+  background:none;
+  flex:1;
+  margin:0 10px;
+  outline:none;
+  font-size:16px;
+}
+
+
+/*==========================
+BOTÃO
+===========================*/
+
+.btn{
+  width:100%;
+  padding:15px;
+  background:#FFD600;
+  border:none;
+  border-radius:10px;
+  font-size:18px;
+  margin-top:15px;
+}
+
+
+/*==========================
+CADASTRO
+===========================*/
+
+.cadastro{
+  margin-top:15px;
+  color:#666;
+}
+
+.cadastro b{
+  color:#000;
+}
+
+
+/*==========================
+OU
+===========================*/
+
+.ou{
+  display:flex;
+  align-items:center;
+  margin:20px 0;
+}
+
+.ou span{
+  flex:1;
+  height:1px;
+  background:#ccc;
+}
+
+.ou p{
+  margin:0 10px;
+  color:#666;
+}
+
+
+/*==========================
+GMAIL
+===========================*/
+
+.gmail{
+  width:100%;
+  padding:15px;
+  background:#000;
+  color:#fff;
+  border:none;
+  border-radius:10px;
 }
