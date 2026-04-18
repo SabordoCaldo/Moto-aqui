@@ -6,129 +6,17 @@
 
 <title>Moto Aqui</title>
 
-<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="css/style.css">
 
-<style>
-body{
-  font-family: Arial;
-  text-align:center;
-  background:#f5f5f5;
-  margin:0;
-}
-
-/* SPLASH */
-#splash{
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  height:100vh;
-}
-
-#splash img{
-  width:120px;
-}
-
-/* HOME */
-#home{
-  padding:20px;
-}
-
-button{
-  padding:12px 20px;
-  background:#FFD700;
-  border:none;
-  border-radius:8px;
-  font-weight:bold;
-  margin-top:15px;
-}
-
-/* FORM */
-#form{
-  display:none;
-  margin-top:20px;
-}
-
-input{
-  display:block;
-  width:80%;
-  margin:10px auto;
-  padding:10px;
-}
-
-/* RESULTADO */
-.card{
-  background:#fff;
-  margin-top:20px;
-  padding:15px;
-  border-radius:10px;
-}
-</style>
 </head>
 
 <body>
 
-<!-- SPLASH -->
 <div id="splash">
   <img src="moto-aqui-app/assets/logo.png">
-  <h1>Moto Aqui</h1>
-  <p>Carregando...</p>
 </div>
 
-<!-- HOME -->
-<div id="home" style="display:none;">
-  <h2>Bem-vindo</h2>
-
-  <button onclick="abrirForm()">Pedir Corrida</button>
-
-  <!-- FORM -->
-  <div id="form">
-    <input id="nome" placeholder="Seu nome">
-    <input id="telefone" placeholder="Telefone">
-    <input id="endereco" placeholder="Endereço">
-
-    <button onclick="enviarPedido()">Confirmar</button>
-  </div>
-
-  <!-- RESULTADO -->
-  <div id="resultado"></div>
-</div>
-
-<script>
-
-/* SPLASH */
-setTimeout(() => {
-  document.getElementById("splash").style.display = "none";
-  document.getElementById("home").style.display = "block";
-}, 3000);
-
-/* ABRIR FORM */
-function abrirForm(){
-  document.getElementById("form").style.display = "block";
-}
-
-/* ENVIAR PEDIDO */
-function enviarPedido(){
-  let nome = document.getElementById("nome").value;
-  let tel = document.getElementById("telefone").value;
-  let end = document.getElementById("endereco").value;
-
-  document.getElementById("resultado").innerHTML = `
-    <div class="card">
-      <h3>Pedido enviado 🚀</h3>
-      <p><b>Nome:</b> ${nome}</p>
-      <p><b>Telefone:</b> ${tel}</p>
-      <p><b>Endereço:</b> ${end}</p>
-    </div>
-  `;
-}
-
-/* SERVICE WORKER */
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js');
-}
-
-</script>
+<script src="js/script.js"></script>
 
 </body>
 </html>
