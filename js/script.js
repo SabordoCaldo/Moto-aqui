@@ -1,6 +1,6 @@
-//==========================
-// SPLASH → LOGIN
-//==========================
+/*===========================
+SPLASH TIME
+===========================*/
 
 setTimeout(() => {
   document.getElementById("splash").style.display = "none";
