@@ -2,48 +2,132 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#FFD700">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Moto Aqui</title>
 
+<link rel="manifest" href="manifest.json">
+
 <style>
 body{
-  font-family:Arial;
+  font-family: Arial;
   text-align:center;
-  background:#fff;
+  background:#f5f5f5;
   margin:0;
-  padding:40px;
 }
 
-img{
-  width:200px;
+/* SPLASH */
+#splash{
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
 }
 
-h1{
-  color:#000;
+#splash img{
+  width:120px;
 }
 
-p{
-  color:#555;
+/* HOME */
+#home{
+  padding:20px;
+}
+
+button{
+  padding:12px 20px;
+  background:#FFD700;
+  border:none;
+  border-radius:8px;
+  font-weight:bold;
+  margin-top:15px;
+}
+
+/* FORM */
+#form{
+  display:none;
+  margin-top:20px;
+}
+
+input{
+  display:block;
+  width:80%;
+  margin:10px auto;
+  padding:10px;
+}
+
+/* RESULTADO */
+.card{
+  background:#fff;
+  margin-top:20px;
+  padding:15px;
+  border-radius:10px;
 }
 </style>
-
 </head>
 
 <body>
 
-<img src="moto-aqui-app/assets/logo.png">
+<!-- SPLASH -->
+<div id="splash">
+  <img src="moto-aqui-app/assets/logo.png">
+  <h1>Moto Aqui</h1>
+  <p>Carregando...</p>
+</div>
 
-<h1>Moto Aqui</h1>
-<p>App de mobilidade urbana</p>
+<!-- HOME -->
+<div id="home" style="display:none;">
+  <h2>Bem-vindo</h2>
+
+  <button onclick="abrirForm()">Pedir Corrida</button>
+
+  <!-- FORM -->
+  <div id="form">
+    <input id="nome" placeholder="Seu nome">
+    <input id="telefone" placeholder="Telefone">
+    <input id="endereco" placeholder="Endereço">
+
+    <button onclick="enviarPedido()">Confirmar</button>
+  </div>
+
+  <!-- RESULTADO -->
+  <div id="resultado"></div>
+</div>
 
 <script>
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.register('sw.js')
-    .then(() => console.log('SW registrado'));
+
+/* SPLASH */
+setTimeout(() => {
+  document.getElementById("splash").style.display = "none";
+  document.getElementById("home").style.display = "block";
+}, 3000);
+
+/* ABRIR FORM */
+function abrirForm(){
+  document.getElementById("form").style.display = "block";
 }
+
+/* ENVIAR PEDIDO */
+function enviarPedido(){
+  let nome = document.getElementById("nome").value;
+  let tel = document.getElementById("telefone").value;
+  let end = document.getElementById("endereco").value;
+
+  document.getElementById("resultado").innerHTML = `
+    <div class="card">
+      <h3>Pedido enviado 🚀</h3>
+      <p><b>Nome:</b> ${nome}</p>
+      <p><b>Telefone:</b> ${tel}</p>
+      <p><b>Endereço:</b> ${end}</p>
+    </div>
+  `;
+}
+
+/* SERVICE WORKER */
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
+}
+
 </script>
 
 </body>
