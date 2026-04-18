@@ -48,7 +48,7 @@ LOGO
 .logo-box{
   width:300px;
   height:300px;
-  margin:0 auto 10px;
+  margin:-10 auto 10px;
   background:#fff;
   border-radius:20px;
   display:flex;
