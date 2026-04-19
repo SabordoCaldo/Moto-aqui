@@ -51,7 +51,7 @@ function continuar(){
     return;
   }
 
-  // 🔥 REMOVE SCRIPT ANTIGO (EVITA BUG)
+  // REMOVE SCRIPT ANTIGO
   const antigo = document.getElementById("scriptCidade");
   if(antigo){
     antigo.remove();
@@ -61,7 +61,6 @@ function continuar(){
   script.src = arquivo;
   script.id = "scriptCidade";
 
-  // 🔥 SE CARREGAR
   script.onload = function(){
 
     if(typeof cidadeConfig === "undefined"){
@@ -85,9 +84,8 @@ function continuar(){
 
   };
 
-  // 🔥 SE DER ERRO
   script.onerror = function(){
-    alert("Erro ao carregar cidade. Verifique os arquivos.");
+    alert("Erro ao carregar cidade.");
   };
 
   document.body.appendChild(script);
