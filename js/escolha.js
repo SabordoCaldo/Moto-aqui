@@ -25,22 +25,10 @@ function getArquivoCidade(cidade){
 
 function continuar(){
 
-  const tipo = document.querySelector('input[name="tipo"]:checked');
   const cidade = document.getElementById("cidade").value;
-  const termos = document.getElementById("termos").checked;
 
-  if(!tipo){
+  if(!tipoSelecionado){
     alert("Selecione cliente ou motorista");
-    return;
-  }
-
-  if(!cidade){
-    alert("Selecione a cidade");
-    return;
-  }
-
-  if(!termos){
-    alert("Aceite os termos");
     return;
   }
 
@@ -51,32 +39,20 @@ function continuar(){
     return;
   }
 
-  // REMOVE SCRIPT ANTIGO
-  const antigo = document.getElementById("scriptCidade");
-  if(antigo){
-    antigo.remove();
-  }
-
   const script = document.createElement("script");
   script.src = arquivo;
-  script.id = "scriptCidade";
 
   script.onload = function(){
 
-    if(typeof cidadeConfig === "undefined"){
-      alert("Erro ao carregar cidade");
-      return;
-    }
-
     if(!cidadeConfig.ativa){
-      alert("Ainda não estamos na sua cidade 😔\nMas chegaremos em breve!");
+      alert("Ainda não estamos na sua cidade 😔");
       return;
     }
 
     localStorage.setItem("cidade", cidade);
-    localStorage.setItem("tipo", tipo.value);
+    localStorage.setItem("tipo", tipoSelecionado);
 
-    if(tipo.value === "cliente"){
+    if(tipoSelecionado === "cliente"){
       window.location.href = "cliente.html";
     }else{
       window.location.href = "motorista.html";
@@ -85,7 +61,7 @@ function continuar(){
   };
 
   script.onerror = function(){
-    alert("Erro ao carregar cidade.");
+    alert("Erro ao carregar cidade");
   };
 
   document.body.appendChild(script);
