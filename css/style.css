@@ -272,3 +272,10 @@ FOTO PERFIL
   font-weight:bold;
   font-size:20px;
 }
+
+.eye{
+  margin-left:10px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+}
