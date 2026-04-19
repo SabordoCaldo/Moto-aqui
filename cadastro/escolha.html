@@ -23,27 +23,35 @@
 
     <!-- TEXTO -->
     <p style="text-align:center;color:#f1c40f;">App de mobilidade urbana</p>
-    <h1 style="text-align:center;">Escolha o Tipo</h1>
+    <h1 style="text-align:center;">Escolha eu sou</h1>
 
     <!-- BOTÕES -->
-    <button class="btn" onclick="selecionarTipo('cliente')" id="btnCliente">
+    <button class="btn" onclick="selecionarTipo('cliente')" id="btnCliente" style="margin-bottom:10px;">
       Sou Cliente
     </button>
 
-    <button class="btn" onclick="selecionarTipo('motorista')" id="btnMotorista">
+    <button class="btn" onclick="selecionarTipo('motorista')" id="btnMotorista" style="margin-bottom:20px;">
       Sou Motorista
     </button>
 
     <!-- CIDADE -->
     <label>Cidade</label>
-    <select id="cidade" class="input-box">
-      <option value="">Selecione sua cidade</option>
-      <option>Alpinópolis</option>
-      <option>Bom Jesus da Penha</option>
-      <option>Itaú de Minas</option>
-      <option>Passos</option>
-      <option>São João Batista do Glória</option>
-    </select>
+
+    <input 
+      list="listaCidades" 
+      id="cidade" 
+      class="input-box" 
+      placeholder="Digite ou selecione sua cidade"
+      style="background:white;color:black;"
+    >
+
+    <datalist id="listaCidades">
+      <option value="Passos">
+      <option value="Alpinópolis">
+      <option value="Bom Jesus da Penha">
+      <option value="Itaú de Minas">
+      <option value="São João Batista do Glória">
+    </datalist>
 
     <!-- TERMOS -->
     <h3>Termos e Privacidade</h3>
@@ -90,7 +98,7 @@ const botao = document.getElementById("btnContinuar");
 // CARREGA TERMOS
 box.innerHTML = termosApp.texto;
 
-// LIBERA CHECKBOX NO FINAL
+// SCROLL LIBERA CHECK
 box.addEventListener("scroll", function(){
 
   const chegouFinal = box.scrollTop + box.clientHeight >= box.scrollHeight - 2;
@@ -113,7 +121,7 @@ function selecionarTipo(tipo){
   verificar();
 }
 
-// VERIFICA LIBERAÇÃO
+// VALIDAÇÃO
 function verificar(){
 
   const cidade = document.getElementById("cidade").value;
@@ -130,7 +138,7 @@ function verificar(){
 }
 
 // EVENTOS
-document.getElementById("cidade").addEventListener("change", verificar);
+document.getElementById("cidade").addEventListener("input", verificar);
 checkbox.addEventListener("change", verificar);
 
 </script>
