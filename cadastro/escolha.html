@@ -7,6 +7,8 @@
 
 <link rel="stylesheet" href="../css/style.css">
 
+<title>Escolha</title>
+
 </head>
 
 <body>
@@ -14,19 +16,28 @@
 <div class="container">
   <div class="card">
 
-    <h1>Como você quer usar?</h1>
+    <!-- LOGO -->
+    <div style="text-align:center;">
+      <img src="../assets/logo.png" style="width:180px;">
+    </div>
 
-    <label>
-      <input type="radio" name="tipo" value="cliente"> Cliente
-    </label>
+    <!-- TEXTO -->
+    <p style="text-align:center;color:#f1c40f;">App de mobilidade urbana</p>
+    <h1 style="text-align:center;">Escolha o Tipo</h1>
 
-    <label>
-      <input type="radio" name="tipo" value="motorista"> Motorista
-    </label>
+    <!-- BOTÕES -->
+    <button class="btn" onclick="selecionarTipo('cliente')" id="btnCliente">
+      Sou Cliente
+    </button>
 
+    <button class="btn" onclick="selecionarTipo('motorista')" id="btnMotorista">
+      Sou Motorista
+    </button>
+
+    <!-- CIDADE -->
     <label>Cidade</label>
     <select id="cidade" class="input-box">
-      <option value="">Selecione</option>
+      <option value="">Selecione sua cidade</option>
       <option>Alpinópolis</option>
       <option>Bom Jesus da Penha</option>
       <option>Itaú de Minas</option>
@@ -34,7 +45,9 @@
       <option>São João Batista do Glória</option>
     </select>
 
-    <!-- TERMOS COM SCROLL -->
+    <!-- TERMOS -->
+    <h3>Termos e Privacidade</h3>
+
     <div id="boxTermos" style="
       height:150px;
       overflow-y:scroll;
@@ -45,13 +58,19 @@
       margin-bottom:10px;
     "></div>
 
-    <!-- CHECKBOX BLOQUEADO -->
     <label id="labelTermos" style="opacity:0.5;">
       <input type="checkbox" id="termos" disabled>
-      Li e aceito os termos
+      Estou ciente e aceito os termos
     </label>
 
-    <button class="btn" onclick="continuar()">Continuar</button>
+    <!-- BOTÃO -->
+    <button class="btn" id="btnContinuar" onclick="continuar()" disabled>
+      Continuar
+    </button>
+
+    <p style="text-align:center;">
+      <a href="../index.html">Voltar</a>
+    </p>
 
   </div>
 </div>
@@ -61,22 +80,58 @@
 
 <script>
 
+let tipoSelecionado = null;
+
 const box = document.getElementById("boxTermos");
 const checkbox = document.getElementById("termos");
 const label = document.getElementById("labelTermos");
+const botao = document.getElementById("btnContinuar");
 
-// CARREGAR TERMOS
+// CARREGA TERMOS
 box.innerHTML = termosApp.texto;
 
-// LIBERAR CHECKBOX AO CHEGAR NO FINAL
-box.addEventListener("scroll", () => {
+// LIBERA CHECKBOX NO FINAL
+box.addEventListener("scroll", function(){
 
-  if(box.scrollTop + box.clientHeight >= box.scrollHeight - 5){
+  const chegouFinal = box.scrollTop + box.clientHeight >= box.scrollHeight - 2;
+
+  if(chegouFinal){
     checkbox.disabled = false;
     label.style.opacity = "1";
   }
 
 });
+
+// SELEÇÃO BOTÃO
+function selecionarTipo(tipo){
+
+  tipoSelecionado = tipo;
+
+  document.getElementById("btnCliente").style.opacity = tipo === "cliente" ? "1" : "0.5";
+  document.getElementById("btnMotorista").style.opacity = tipo === "motorista" ? "1" : "0.5";
+
+  verificar();
+}
+
+// VERIFICA LIBERAÇÃO
+function verificar(){
+
+  const cidade = document.getElementById("cidade").value;
+  const termos = checkbox.checked;
+
+  if(tipoSelecionado && cidade && termos){
+    botao.disabled = false;
+    botao.style.opacity = "1";
+  }else{
+    botao.disabled = true;
+    botao.style.opacity = "0.5";
+  }
+
+}
+
+// EVENTOS
+document.getElementById("cidade").addEventListener("change", verificar);
+checkbox.addEventListener("change", verificar);
 
 </script>
 
