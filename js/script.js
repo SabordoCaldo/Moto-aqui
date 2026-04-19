@@ -2,12 +2,13 @@
 SCRIPT
 ===========================*/
 
-// PEGAR USUÁRIOS
+// ===========================
+// USUÁRIOS
+// ===========================
 function getUsuarios(){
   return JSON.parse(localStorage.getItem("usuarios")) || [];
 }
 
-// SALVAR USUÁRIOS
 function setUsuarios(lista){
   localStorage.setItem("usuarios", JSON.stringify(lista));
 }
@@ -29,14 +30,12 @@ function cadastrarCliente(){
 
   let usuarios = getUsuarios();
 
-  // VERIFICAR EMAIL
   const existe = usuarios.find(u => u.email === email);
   if(existe){
     alert("Esse e-mail já está cadastrado!");
     return;
   }
 
-  // VALIDAR SENHA
   if(senha !== confirmarSenha){
     alert("As senhas não coincidem!");
     return;
@@ -78,7 +77,6 @@ function login(){
     return;
   }
 
-  // SALVA LOGIN ATIVO
   localStorage.setItem("usuarioLogado", JSON.stringify(usuario));
 
   if(usuario.tipo === "cliente"){
@@ -107,7 +105,7 @@ function verificarLogin(){
 
 
 // ===========================
-// SAIR
+// LOGOUT
 // ===========================
 function logout(){
   localStorage.removeItem("usuarioLogado");
@@ -116,7 +114,7 @@ function logout(){
 
 
 // ===========================
-// MOSTRAR PERFIL
+// PERFIL
 // ===========================
 function carregarPerfil(){
 
@@ -133,7 +131,7 @@ function carregarPerfil(){
 
 
 // ===========================
-// PREVIEW FOTO
+// PREVIEW DA FOTO
 // ===========================
 document.addEventListener("DOMContentLoaded", () => {
 
@@ -159,3 +157,27 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
 });
+
+
+// ===========================
+// MOSTRAR / OCULTAR SENHA
+// ===========================
+function toggleSenha(id){
+
+  const input = document.getElementById(id);
+  const container = input.parentElement;
+
+  const eyeOpen = container.querySelector(".eye-open");
+  const eyeClosed = container.querySelector(".eye-closed");
+
+  if(input.type === "password"){
+    input.type = "text";
+    eyeOpen.style.display = "none";
+    eyeClosed.style.display = "block";
+  }else{
+    input.type = "password";
+    eyeOpen.style.display = "block";
+    eyeClosed.style.display = "none";
+  }
+
+}
