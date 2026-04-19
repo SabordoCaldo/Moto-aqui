@@ -2,6 +2,9 @@
 <html lang="pt-BR">
 <head>
 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <link rel="stylesheet" href="../css/style.css">
 
 </head>
@@ -11,36 +14,43 @@
 <div class="container">
   <div class="card">
 
-    <h1>Você é cliente ou motorista?</h1>
+    <h1>Como você quer usar?</h1>
 
-    <button class="btn" onclick="selecionarTipo('cliente')">Sou Cliente</button>
-    <button class="btn" onclick="selecionarTipo('motorista')">Sou Motorista</button>
+    <label>
+      <input type="radio" name="tipo" value="cliente"> Cliente
+    </label>
 
-    <select id="cidade" onchange="validar()">
-      <option value="">Selecione sua cidade</option>
+    <label>
+      <input type="radio" name="tipo" value="motorista"> Motorista
+    </label>
+
+    <label>Cidade</label>
+    <select id="cidade" class="input-box">
+      <option value="">Selecione</option>
       <option>Alpinópolis</option>
       <option>Bom Jesus da Penha</option>
-      <option>Cássia</option>
-      <option>Fortaleza de Minas</option>
-      <option>Furnas</option>
       <option>Itaú de Minas</option>
       <option>Passos</option>
-      <option>Pratápolis</option>
       <option>São João Batista do Glória</option>
-      <option>São José da Barra</option>
-      <option>São Sebastião do Paraíso</option>
     </select>
 
-    <input type="checkbox" id="termosCheck" onchange="validar()"> Aceito termos
+    <div id="boxTermos"></div>
 
-    <button id="btnContinuar" class="btn" onclick="continuar()" disabled>
-      Continuar
-    </button>
+    <label>
+      <input type="checkbox" id="termos"> Aceito os termos
+    </label>
+
+    <button class="btn" onclick="continuar()">Continuar</button>
 
   </div>
 </div>
 
+<script src="../termos/termos.js"></script>
 <script src="../js/escolha.js"></script>
+
+<script>
+document.getElementById("boxTermos").innerHTML = termosApp.texto;
+</script>
 
 </body>
 </html>
