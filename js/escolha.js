@@ -23,7 +23,7 @@ function getArquivoCidade(cidade){
 
 }
 
-async function continuar(){
+function continuar(){
 
   const tipo = document.querySelector('input[name="tipo"]:checked');
   const cidade = document.getElementById("cidade").value;
@@ -51,20 +51,45 @@ async function continuar(){
     return;
   }
 
-  await import(arquivo);
-
-  if(!cidadeConfig.ativa){
-    alert("Ainda não estamos na sua cidade 😔\nMas chegaremos em breve!");
-    return;
+  // 🔥 REMOVE SCRIPT ANTIGO (EVITA BUG)
+  const antigo = document.getElementById("scriptCidade");
+  if(antigo){
+    antigo.remove();
   }
 
-  localStorage.setItem("cidade", cidade);
-  localStorage.setItem("tipo", tipo.value);
+  const script = document.createElement("script");
+  script.src = arquivo;
+  script.id = "scriptCidade";
 
-  if(tipo.value === "cliente"){
-    window.location.href = "cliente.html";
-  }else{
-    window.location.href = "motorista.html";
-  }
+  // 🔥 SE CARREGAR
+  script.onload = function(){
+
+    if(typeof cidadeConfig === "undefined"){
+      alert("Erro ao carregar cidade");
+      return;
+    }
+
+    if(!cidadeConfig.ativa){
+      alert("Ainda não estamos na sua cidade 😔\nMas chegaremos em breve!");
+      return;
+    }
+
+    localStorage.setItem("cidade", cidade);
+    localStorage.setItem("tipo", tipo.value);
+
+    if(tipo.value === "cliente"){
+      window.location.href = "cliente.html";
+    }else{
+      window.location.href = "motorista.html";
+    }
+
+  };
+
+  // 🔥 SE DER ERRO
+  script.onerror = function(){
+    alert("Erro ao carregar cidade. Verifique os arquivos.");
+  };
+
+  document.body.appendChild(script);
 
 }
