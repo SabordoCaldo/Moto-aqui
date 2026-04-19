@@ -1,42 +1,25 @@
-// HOME CLIENTE E MOTORISTA
+// PROTEÇÃO
+const usuarioTipo = localStorage.getItem("tipo");
 
-function carregarHome(){
+if(!usuarioTipo){
+  window.location.href = "../index.html";
+}
 
-  const usuario = JSON.parse(localStorage.getItem("logado"));
+// INICIAR HOME
+function iniciarHome(tipo){
 
-  if(!usuario){
-    window.location.href = "../index.html";
-    return;
-  }
+  let chave = tipo === "motorista" ? "fotoMotorista" : "fotoCliente";
 
-  // NOME
-  const nome = document.getElementById("nomePerfil");
-  if(nome) nome.innerText = usuario.nome;
+  const foto = localStorage.getItem(chave);
 
-  // FOTO
-  const foto = document.getElementById("fotoPerfil");
   if(foto){
-    foto.src = usuario.foto || "../assets/user.png";
-  }
-
-  // STATUS MOTORISTA
-  const status = document.getElementById("statusMotorista");
-
-  if(status){
-    if(usuario.status === "pendente"){
-      status.innerText = "Aguardando aprovação";
-      status.style.color = "orange";
-    }else{
-      status.innerText = "Aprovado";
-      status.style.color = "green";
-    }
+    document.getElementById("fotoPerfil").src = foto;
   }
 
 }
 
-
 // LOGOUT
 function logout(){
-  localStorage.removeItem("logado");
+  localStorage.clear();
   window.location.href = "../index.html";
 }
