@@ -2,11 +2,6 @@
 <html lang="pt-BR">
 <head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Escolher Tipo</title>
-
 <link rel="stylesheet" href="../css/style.css">
 
 </head>
@@ -14,39 +9,38 @@
 <body>
 
 <div class="container">
-
   <div class="card">
 
-    <!-- LOGO -->
-    <div class="logo-box">
-      <img src="../assets/logo.png">
-    </div>
+    <h1>Você é cliente ou motorista?</h1>
 
-    <!-- TEXTO -->
-    <p class="sub">App de mobilidade urbana</p>
-    <h1>ESCOLHA O TIPO</h1>
+    <button class="btn" onclick="selecionarTipo('cliente')">Sou Cliente</button>
+    <button class="btn" onclick="selecionarTipo('motorista')">Sou Motorista</button>
 
-    <!-- BOTÕES -->
-    <div class="form">
+    <select id="cidade" onchange="validar()">
+      <option value="">Selecione sua cidade</option>
+      <option>Alpinópolis</option>
+      <option>Bom Jesus da Penha</option>
+      <option>Cássia</option>
+      <option>Fortaleza de Minas</option>
+      <option>Furnas</option>
+      <option>Itaú de Minas</option>
+      <option>Passos</option>
+      <option>Pratápolis</option>
+      <option>São João Batista do Glória</option>
+      <option>São José da Barra</option>
+      <option>São Sebastião do Paraíso</option>
+    </select>
 
-      <a href="cliente.html">
-        <button class="btn">Sou Cliente</button>
-      </a>
+    <input type="checkbox" id="termosCheck" onchange="validar()"> Aceito termos
 
-      <a href="motorista.html">
-        <button class="btn">Sou Motorista</button>
-      </a>
-
-      <!-- VOLTAR -->
-      <p class="cadastro">
-        <a href="../index.html">Voltar</a>
-      </p>
-
-    </div>
+    <button id="btnContinuar" class="btn" onclick="continuar()" disabled>
+      Continuar
+    </button>
 
   </div>
-
 </div>
+
+<script src="../js/escolha.js"></script>
 
 </body>
 </html>
