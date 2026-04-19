@@ -5,8 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Área do Cliente</title>
-
 <link rel="stylesheet" href="../css/style.css">
 
 </head>
@@ -14,67 +12,23 @@
 <body>
 
 <div class="container">
-
   <div class="card">
 
     <h1>CLIENTE</h1>
 
-    <div class="form" style="text-align:center;">
+    <img id="fotoPerfil" src="../assets/user-cliente.png"
+    style="width:120px;height:120px;border-radius:50%;object-fit:cover;">
 
-      <!-- FOTO -->
-      <img id="fotoPerfil" style="
-        width:120px;
-        height:120px;
-        border-radius:50%;
-        object-fit:cover;
-        border:3px solid #ddd;
-        margin-bottom:10px;
-      ">
-
-      <!-- NOME -->
-      <h2 id="nomePerfil"></h2>
-
-      <!-- BOTÕES -->
-      <button class="btn">Pedir Corrida</button>
-
-      <button class="gmail">Histórico</button>
-
-      <button class="btn" onclick="logout()">Sair</button>
-
-    </div>
+    <button class="btn">Pedir Corrida</button>
+    <button class="btn" onclick="logout()">Sair</button>
 
   </div>
-
 </div>
 
+<script src="../js/home.js"></script>
+
 <script>
-
-// PEGA USUÁRIO LOGADO
-const usuario = JSON.parse(localStorage.getItem("logado"));
-
-// SE NÃO TIVER, VOLTA PRO LOGIN
-if(!usuario){
-  window.location.href = "../index.html";
-}
-
-// NOME
-document.getElementById("nomePerfil").innerText = usuario.nome || "Usuário";
-
-// FOTO
-const foto = document.getElementById("fotoPerfil");
-
-if(usuario.foto){
-  foto.src = usuario.foto;
-}else{
-  foto.src = "../assets/user.png";
-}
-
-// LOGOUT
-function logout(){
-  localStorage.removeItem("logado");
-  window.location.href = "../index.html";
-}
-
+iniciarHome("cliente");
 </script>
 
 </body>
