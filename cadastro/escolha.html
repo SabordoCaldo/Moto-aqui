@@ -27,31 +27,22 @@
 
     <!-- BOTÕES -->
     <button class="btn" onclick="selecionarTipo('cliente')" id="btnCliente" style="margin-bottom:10px;">
-      Sou Cliente
+      Cliente
     </button>
 
     <button class="btn" onclick="selecionarTipo('motorista')" id="btnMotorista" style="margin-bottom:20px;">
-      Sou Motorista
+      Motorista
     </button>
 
-    <!-- CIDADE -->
+    <!-- CIDADE (APENAS PESQUISA) -->
     <label>Cidade</label>
 
     <input 
-      list="listaCidades" 
       id="cidade" 
       class="input-box" 
-      placeholder="Digite ou selecione sua cidade"
+      placeholder="Digite sua cidade"
       style="background:white;color:black;"
     >
-
-    <datalist id="listaCidades">
-      <option value="Passos">
-      <option value="Alpinópolis">
-      <option value="Bom Jesus da Penha">
-      <option value="Itaú de Minas">
-      <option value="São João Batista do Glória">
-    </datalist>
 
     <!-- TERMOS -->
     <h3>Termos e Privacidade</h3>
@@ -95,10 +86,19 @@ const checkbox = document.getElementById("termos");
 const label = document.getElementById("labelTermos");
 const botao = document.getElementById("btnContinuar");
 
+// LISTA DE CIDADES (MESMA DO JS)
+const cidadesValidas = [
+  "Passos",
+  "Alpinópolis",
+  "Bom Jesus da Penha",
+  "Itaú de Minas",
+  "São João Batista do Glória"
+];
+
 // CARREGA TERMOS
 box.innerHTML = termosApp.texto;
 
-// SCROLL LIBERA CHECK
+// LIBERA CHECKBOX NO FINAL
 box.addEventListener("scroll", function(){
 
   const chegouFinal = box.scrollTop + box.clientHeight >= box.scrollHeight - 2;
@@ -124,10 +124,13 @@ function selecionarTipo(tipo){
 // VALIDAÇÃO
 function verificar(){
 
-  const cidade = document.getElementById("cidade").value;
+  const cidade = document.getElementById("cidade").value.trim();
   const termos = checkbox.checked;
 
-  if(tipoSelecionado && cidade && termos){
+  // valida se cidade existe na lista
+  const cidadeValida = cidadesValidas.includes(cidade);
+
+  if(tipoSelecionado && cidadeValida && termos){
     botao.disabled = false;
     botao.style.opacity = "1";
   }else{
