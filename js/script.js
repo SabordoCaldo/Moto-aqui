@@ -2,7 +2,20 @@
 SCRIPT
 ===========================*/
 
+// PEGAR USUÁRIOS
+function getUsuarios(){
+  return JSON.parse(localStorage.getItem("usuarios")) || [];
+}
+
+// SALVAR USUÁRIOS
+function setUsuarios(lista){
+  localStorage.setItem("usuarios", JSON.stringify(lista));
+}
+
+
+// ===========================
 // CADASTRO CLIENTE
+// ===========================
 function cadastrarCliente(){
 
   const nome = document.getElementById("nome").value;
@@ -12,16 +25,18 @@ function cadastrarCliente(){
   const senha = document.getElementById("senha").value;
   const confirmarSenha = document.getElementById("confirmarSenha").value;
 
-  // FOTO
-  const preview = document.getElementById("preview").src;
+  const foto = document.getElementById("preview").src;
 
-  const usuarioExistente = JSON.parse(localStorage.getItem("usuario"));
+  let usuarios = getUsuarios();
 
-  if(usuarioExistente && usuarioExistente.email === email){
+  // VERIFICAR EMAIL
+  const existe = usuarios.find(u => u.email === email);
+  if(existe){
     alert("Esse e-mail já está cadastrado!");
     return;
   }
 
+  // VALIDAR SENHA
   if(senha !== confirmarSenha){
     alert("As senhas não coincidem!");
     return;
@@ -33,11 +48,12 @@ function cadastrarCliente(){
     endereco,
     email,
     senha,
-    foto: preview, // 👈 FOTO SALVA
+    foto,
     tipo: "cliente"
   };
 
-  localStorage.setItem("usuario", JSON.stringify(usuario));
+  usuarios.push(usuario);
+  setUsuarios(usuarios);
 
   alert("Cadastro realizado!");
 
@@ -45,56 +61,80 @@ function cadastrarCliente(){
 }
 
 
-// CADASTRO MOTORISTA
-function cadastrarMotorista(){
-
-  const nome = document.getElementById("nome").value;
-  const email = document.getElementById("email").value;
-  const senha = document.getElementById("senha").value;
-
-  const usuario = {
-    nome,
-    email,
-    senha,
-    tipo: "motorista"
-  };
-
-  localStorage.setItem("usuario", JSON.stringify(usuario));
-
-  alert("Cadastro realizado!");
-
-  window.location.href = "../index.html";
-}
-
-
+// ===========================
 // LOGIN
+// ===========================
 function login(){
 
   const email = document.getElementById("email").value;
   const senha = document.getElementById("senha").value;
 
-  const usuario = JSON.parse(localStorage.getItem("usuario"));
+  const usuarios = getUsuarios();
+
+  const usuario = usuarios.find(u => u.email === email && u.senha === senha);
 
   if(!usuario){
-    alert("Usuário não cadastrado!");
+    alert("Email ou senha inválidos!");
     return;
   }
 
-  if(email === usuario.email && senha === usuario.senha){
+  // SALVA LOGIN ATIVO
+  localStorage.setItem("usuarioLogado", JSON.stringify(usuario));
 
-    if(usuario.tipo === "cliente"){
-      window.location.href = "cadastro/cliente-home.html";
-    }else{
-      window.location.href = "cadastro/motorista.html";
-    }
-
+  if(usuario.tipo === "cliente"){
+    window.location.href = "cadastro/cliente-home.html";
   }else{
-    alert("Email ou senha inválidos!");
+    window.location.href = "cadastro/motorista.html";
   }
 }
 
 
-// PREVIEW DA FOTO
+// ===========================
+// MANTER LOGIN
+// ===========================
+function verificarLogin(){
+
+  const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+  if(!usuario) return;
+
+  if(window.location.pathname.includes("index.html")){
+    if(usuario.tipo === "cliente"){
+      window.location.href = "cadastro/cliente-home.html";
+    }
+  }
+}
+
+
+// ===========================
+// SAIR
+// ===========================
+function logout(){
+  localStorage.removeItem("usuarioLogado");
+  window.location.href = "../index.html";
+}
+
+
+// ===========================
+// MOSTRAR PERFIL
+// ===========================
+function carregarPerfil(){
+
+  const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+  if(!usuario) return;
+
+  const nome = document.getElementById("nomePerfil");
+  const foto = document.getElementById("fotoPerfil");
+
+  if(nome) nome.innerText = usuario.nome;
+  if(foto) foto.src = usuario.foto;
+}
+
+
+// ===========================
+// PREVIEW FOTO
+// ===========================
 document.addEventListener("DOMContentLoaded", () => {
 
   const fotoInput = document.getElementById("foto");
