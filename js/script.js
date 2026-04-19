@@ -1,10 +1,6 @@
 /*===========================
-SCRIPT
+USUÁRIOS
 ===========================*/
-
-// ===========================
-// USUÁRIOS
-// ===========================
 function getUsuarios(){
   return JSON.parse(localStorage.getItem("usuarios")) || [];
 }
@@ -14,9 +10,9 @@ function setUsuarios(lista){
 }
 
 
-// ===========================
-// CADASTRO CLIENTE
-// ===========================
+/*===========================
+CADASTRO CLIENTE
+===========================*/
 function cadastrarCliente(){
 
   const nome = document.getElementById("nome").value;
@@ -26,22 +22,21 @@ function cadastrarCliente(){
   const senha = document.getElementById("senha").value;
   const confirmarSenha = document.getElementById("confirmarSenha").value;
 
-  const foto = document.getElementById("preview").src;
+  const foto = getImagemFinal();
 
   let usuarios = getUsuarios();
 
-  const existe = usuarios.find(u => u.email === email);
-  if(existe){
-    alert("Esse e-mail já está cadastrado!");
+  if(usuarios.find(u => u.email === email)){
+    alert("E-mail já cadastrado!");
     return;
   }
 
   if(senha !== confirmarSenha){
-    alert("As senhas não coincidem!");
+    alert("Senhas não coincidem!");
     return;
   }
 
-  const usuario = {
+  usuarios.push({
     nome,
     telefone,
     endereco,
@@ -49,20 +44,18 @@ function cadastrarCliente(){
     senha,
     foto,
     tipo: "cliente"
-  };
+  });
 
-  usuarios.push(usuario);
   setUsuarios(usuarios);
 
   alert("Cadastro realizado!");
-
   window.location.href = "../index.html";
 }
 
 
-// ===========================
-// LOGIN
-// ===========================
+/*===========================
+LOGIN
+===========================*/
 function login(){
 
   const email = document.getElementById("email").value;
@@ -87,81 +80,9 @@ function login(){
 }
 
 
-// ===========================
-// MANTER LOGIN
-// ===========================
-function verificarLogin(){
-
-  const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
-
-  if(!usuario) return;
-
-  if(window.location.pathname.includes("index.html")){
-    if(usuario.tipo === "cliente"){
-      window.location.href = "cadastro/cliente-home.html";
-    }
-  }
-}
-
-
-// ===========================
-// LOGOUT
-// ===========================
-function logout(){
-  localStorage.removeItem("usuarioLogado");
-  window.location.href = "../index.html";
-}
-
-
-// ===========================
-// PERFIL
-// ===========================
-function carregarPerfil(){
-
-  const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
-
-  if(!usuario) return;
-
-  const nome = document.getElementById("nomePerfil");
-  const foto = document.getElementById("fotoPerfil");
-
-  if(nome) nome.innerText = usuario.nome;
-  if(foto) foto.src = usuario.foto;
-}
-
-
-// ===========================
-// PREVIEW DA FOTO
-// ===========================
-document.addEventListener("DOMContentLoaded", () => {
-
-  const fotoInput = document.getElementById("foto");
-  const preview = document.getElementById("preview");
-
-  if(fotoInput){
-    fotoInput.addEventListener("change", function(){
-
-      const file = this.files[0];
-
-      if(file){
-        const reader = new FileReader();
-
-        reader.onload = function(e){
-          preview.src = e.target.result;
-        }
-
-        reader.readAsDataURL(file);
-      }
-
-    });
-  }
-
-});
-
-
-// ===========================
-// MOSTRAR / OCULTAR SENHA
-// ===========================
+/*===========================
+MOSTRAR / OCULTAR SENHA
+===========================*/
 function toggleSenha(id){
 
   const input = document.getElementById(id);
@@ -181,3 +102,98 @@ function toggleSenha(id){
   }
 
 }
+
+
+/*===========================
+FOTO COM AJUSTE MANUAL
+===========================*/
+document.addEventListener("DOMContentLoaded", () => {
+
+  const input = document.getElementById("foto");
+  const canvas = document.getElementById("canvasFoto");
+
+  if(!input || !canvas) return;
+
+  const ctx = canvas.getContext("2d");
+
+  let img = new Image();
+  let scale = 1;
+  let posX = 0;
+  let posY = 0;
+  let dragging = false;
+  let startX, startY;
+
+  canvas.width = 300;
+  canvas.height = 300;
+
+  function desenhar(){
+    ctx.clearRect(0,0,canvas.width,canvas.height);
+
+    const w = img.width * scale;
+    const h = img.height * scale;
+
+    ctx.drawImage(img, posX, posY, w, h);
+  }
+
+  input.addEventListener("change", function(){
+
+    const file = this.files[0];
+    if(!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = function(e){
+
+      img.onload = function(){
+
+        scale = Math.max(
+          canvas.width / img.width,
+          canvas.height / img.height
+        );
+
+        posX = (canvas.width - img.width * scale) / 2;
+        posY = (canvas.height - img.height * scale) / 2;
+
+        desenhar();
+      };
+
+      img.src = e.target.result;
+    };
+
+    reader.readAsDataURL(file);
+  });
+
+  canvas.addEventListener("touchstart", e=>{
+    dragging = true;
+    startX = e.touches[0].clientX - posX;
+    startY = e.touches[0].clientY - posY;
+  });
+
+  canvas.addEventListener("touchmove", e=>{
+    if(!dragging) return;
+
+    posX = e.touches[0].clientX - startX;
+    posY = e.touches[0].clientY - startY;
+
+    desenhar();
+  });
+
+  canvas.addEventListener("touchend", ()=>{
+    dragging = false;
+  });
+
+  window.zoomIn = function(){
+    scale += 0.1;
+    desenhar();
+  }
+
+  window.zoomOut = function(){
+    scale -= 0.1;
+    desenhar();
+  }
+
+  window.getImagemFinal = function(){
+    return canvas.toDataURL("image/png");
+  }
+
+});
