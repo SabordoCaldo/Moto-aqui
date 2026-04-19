@@ -34,10 +34,21 @@
       <option>São João Batista do Glória</option>
     </select>
 
-    <div id="boxTermos"></div>
+    <!-- TERMOS COM SCROLL -->
+    <div id="boxTermos" style="
+      height:150px;
+      overflow-y:scroll;
+      background:#f5f5f5;
+      padding:10px;
+      border-radius:10px;
+      font-size:13px;
+      margin-bottom:10px;
+    "></div>
 
-    <label>
-      <input type="checkbox" id="termos"> Aceito os termos
+    <!-- CHECKBOX BLOQUEADO -->
+    <label id="labelTermos" style="opacity:0.5;">
+      <input type="checkbox" id="termos" disabled>
+      Li e aceito os termos
     </label>
 
     <button class="btn" onclick="continuar()">Continuar</button>
@@ -49,7 +60,24 @@
 <script src="../js/escolha.js"></script>
 
 <script>
-document.getElementById("boxTermos").innerHTML = termosApp.texto;
+
+const box = document.getElementById("boxTermos");
+const checkbox = document.getElementById("termos");
+const label = document.getElementById("labelTermos");
+
+// CARREGAR TERMOS
+box.innerHTML = termosApp.texto;
+
+// LIBERAR CHECKBOX AO CHEGAR NO FINAL
+box.addEventListener("scroll", () => {
+
+  if(box.scrollTop + box.clientHeight >= box.scrollHeight - 5){
+    checkbox.disabled = false;
+    label.style.opacity = "1";
+  }
+
+});
+
 </script>
 
 </body>
