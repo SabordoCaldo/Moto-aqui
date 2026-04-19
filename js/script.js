@@ -12,6 +12,9 @@ function cadastrarCliente(){
   const senha = document.getElementById("senha").value;
   const confirmarSenha = document.getElementById("confirmarSenha").value;
 
+  // FOTO
+  const preview = document.getElementById("preview").src;
+
   const usuarioExistente = JSON.parse(localStorage.getItem("usuario"));
 
   if(usuarioExistente && usuarioExistente.email === email){
@@ -30,6 +33,7 @@ function cadastrarCliente(){
     endereco,
     email,
     senha,
+    foto: preview, // 👈 FOTO SALVA
     tipo: "cliente"
   };
 
