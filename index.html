@@ -83,5 +83,24 @@
 
 <script src="js/script.js"></script>
 
+<script>
+/*===========================
+AUTO LOGIN
+===========================*/
+(function(){
+
+  const usuario = JSON.parse(localStorage.getItem("usuarioLogado"));
+
+  if(!usuario) return;
+
+  if(usuario.tipo === "cliente"){
+    window.location.href = "cadastro/cliente-home.html";
+  }else{
+    window.location.href = "cadastro/motorista.html";
+  }
+
+})();
+</script>
+
 </body>
 </html>
