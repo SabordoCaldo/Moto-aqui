@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+
+<link rel="stylesheet" href="../css/style.css">
+
+</head>
+
+<body>
+
+<div class="container">
+  <div class="card">
+
+    <h1>Cadastro Motorista</h1>
+
+    <div class="form">
+
+      <label>Nome</label>
+      <div class="input-box">
+        <input id="nome">
+      </div>
+
+      <label>CNH</label>
+      <div class="input-box">
+        <input id="cnh">
+      </div>
+
+      <label>Veículo</label>
+      <div class="input-box">
+        <input id="veiculo">
+      </div>
+
+      <label>Placa</label>
+      <div class="input-box">
+        <input id="placa">
+      </div>
+
+      <button class="btn" onclick="cadastrarMotorista()">
+        Enviar para aprovação
+      </button>
+
+    </div>
+
+  </div>
+</div>
+
+<script src="../js/cadastro.js"></script>
+
+</body>
+</html>
