@@ -5,8 +5,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Área do Motorista</title>
-
 <link rel="stylesheet" href="../css/style.css">
 
 </head>
@@ -14,84 +12,23 @@
 <body>
 
 <div class="container">
-
   <div class="card">
 
     <h1>MOTORISTA</h1>
 
-    <div class="form" style="text-align:center;">
+    <img id="fotoPerfil" src="../assets/user-motorista.png"
+    style="width:120px;height:120px;border-radius:50%;object-fit:cover;">
 
-      <!-- FOTO -->
-      <img id="fotoPerfil" style="
-        width:120px;
-        height:120px;
-        border-radius:50%;
-        object-fit:cover;
-        border:3px solid #ddd;
-        margin-bottom:10px;
-      ">
-
-      <!-- NOME -->
-      <h2 id="nomePerfil"></h2>
-
-      <!-- STATUS -->
-      <p id="statusMotorista" style="margin-bottom:15px; font-weight:bold;"></p>
-
-      <!-- BOTÕES -->
-      <button class="btn">Ficar Online</button>
-
-      <button class="gmail">Corridas Recebidas</button>
-
-      <button class="btn" onclick="logout()">Sair</button>
-
-    </div>
+    <button class="btn">Ficar Online</button>
+    <button class="btn" onclick="logout()">Sair</button>
 
   </div>
-
 </div>
 
+<script src="../js/home.js"></script>
+
 <script>
-
-// PEGA USUÁRIO LOGADO
-const usuario = JSON.parse(localStorage.getItem("logado"));
-
-// SE NÃO TIVER, VOLTA PRO LOGIN
-if(!usuario){
-  window.location.href = "../index.html";
-}
-
-// NOME
-document.getElementById("nomePerfil").innerText = usuario.nome || "Motorista";
-
-// FOTO
-const foto = document.getElementById("fotoPerfil");
-
-if(usuario.foto){
-  foto.src = usuario.foto;
-}else{
-  foto.src = "../assets/user.png";
-}
-
-// STATUS
-const status = document.getElementById("statusMotorista");
-
-if(usuario.status === "pendente"){
-  status.innerText = "Aguardando aprovação";
-  status.style.color = "orange";
-}else if(usuario.status === "aprovado"){
-  status.innerText = "Aprovado";
-  status.style.color = "green";
-}else{
-  status.innerText = "Status desconhecido";
-  status.style.color = "gray";
-}
-
-// LOGOUT
-function logout(){
-  localStorage.removeItem("logado");
-  window.location.href = "../index.html";
-}
-
+iniciarHome("motorista");
 </script>
 
 </body>
