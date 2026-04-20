@@ -25,11 +25,11 @@ function getArquivoCidade(cidade){
 
 function continuar(){
 
-  const tipo = document.querySelector('input[name="tipo"]:checked');
   const cidade = document.getElementById("cidade").value;
   const termos = document.getElementById("termos").checked;
 
-  if(!tipo){
+  // 🔥 USA A VARIÁVEL GLOBAL (BOTÃO)
+  if(!tipoSelecionado){
     alert("Selecione cliente ou motorista");
     return;
   }
@@ -62,9 +62,9 @@ function continuar(){
     }
 
     localStorage.setItem("cidade", cidade);
-    localStorage.setItem("tipo", tipo.value);
+    localStorage.setItem("tipo", tipoSelecionado);
 
-    if(tipo.value === "cliente"){
+    if(tipoSelecionado === "cliente"){
       window.location.href = "cliente.html";
     }else{
       window.location.href = "motorista.html";
