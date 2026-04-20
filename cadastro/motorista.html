@@ -74,13 +74,13 @@ BODY
     </div>
 
     <!-- =========================
-    CNH COMO BOTÃO (IGUAL FOTO)
+    CNH BOX (CORRIGIDO)
     ========================= -->
     <label>CNH (toque para enviar)</label>
 
-    <div class="foto-perfil" onclick="escolherCNH()" style="width:140px;height:90px;border-radius:10px;">
+    <div class="cnh-box" onclick="escolherCNH()">
 
-      <img id="imgCNH" src="../assets/cnh-exemplo.png" style="object-fit:cover;">
+      <img id="imgCNH" src="../assets/cnh-exemplo.png">
 
       <div class="add">+</div>
 
@@ -88,7 +88,6 @@ BODY
 
     </div>
 
-    <!-- TEXTO PDF -->
     <p id="pdfCNH" style="font-size:12px; display:none; text-align:center;"></p>
 
     <!-- =========================
@@ -113,9 +112,7 @@ SCRIPTS
 
 <script>
 
-// =========================
 // FOTO PERFIL
-// =========================
 function escolherFotoPerfil(){
   document.getElementById("inputFotoPerfil").click();
 }
@@ -136,9 +133,7 @@ document.getElementById("inputFotoPerfil").addEventListener("change", function(e
 
 });
 
-// =========================
-// CNH COMO BOTÃO
-// =========================
+// CNH
 function escolherCNH(){
   document.getElementById("inputCNH").click();
 }
@@ -152,7 +147,6 @@ document.getElementById("inputCNH").addEventListener("change", function(e){
   const img = document.getElementById("imgCNH");
   const pdf = document.getElementById("pdfCNH");
 
-  // IMAGEM
   if(file.type.startsWith("image/")){
 
     const reader = new FileReader();
@@ -165,9 +159,7 @@ document.getElementById("inputCNH").addEventListener("change", function(e){
 
     reader.readAsDataURL(file);
 
-  } 
-  // PDF
-  else if(file.type === "application/pdf"){
+  } else if(file.type === "application/pdf"){
 
     img.style.display = "none";
     pdf.style.display = "block";
@@ -177,9 +169,7 @@ document.getElementById("inputCNH").addEventListener("change", function(e){
 
 });
 
-// =========================
 // TELEFONE
-// =========================
 document.getElementById("telefone").addEventListener("input", function(e){
 
   let v = e.target.value.replace(/\D/g, "");
