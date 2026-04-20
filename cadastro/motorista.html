@@ -33,7 +33,6 @@ BODY
     ========================= -->
     <div class="foto-perfil" onclick="escolherFotoPerfil()">
 
-      <!-- 🔥 PADRONIZADO -->
       <img id="fotoPreview" src="../assets/user-motorista.png">
 
       <div class="add">+</div>
@@ -71,7 +70,7 @@ BODY
     ========================= -->
     <label>Número da CNH</label>
     <div class="input-box">
-      <input type="text" id="cnh" placeholder="Digite o número da CNH">
+      <input type="text" id="cnh" maxlength="11" inputmode="numeric" placeholder="Digite o número da CNH">
     </div>
 
     <!-- =========================
@@ -80,6 +79,18 @@ BODY
     <label>CNH (Foto ou PDF)</label>
     <div class="input-box">
       <input type="file" id="arquivoCNH" accept="image/*,.pdf">
+    </div>
+
+    <!-- =========================
+    PREVIEW CNH
+    ========================= -->
+    <div id="previewCNH" style="margin-top:10px; text-align:center;">
+
+      <!-- 🔥 IMAGEM PADRÃO -->
+      <img id="imgCNH" src="../assets/cnh-exemplo.png" style="width:120px; border-radius:10px;">
+
+      <p id="pdfCNH" style="font-size:12px; display:none;"></p>
+
     </div>
 
     <!-- =========================
@@ -104,12 +115,13 @@ SCRIPTS
 
 <script>
 
+// =========================
 // FOTO PERFIL
+// =========================
 function escolherFotoPerfil(){
   document.getElementById("inputFotoPerfil").click();
 }
 
-// PREVIEW FOTO
 document.getElementById("inputFotoPerfil").addEventListener("change", function(e){
 
   const file = e.target.files[0];
@@ -118,7 +130,7 @@ document.getElementById("inputFotoPerfil").addEventListener("change", function(e
     const reader = new FileReader();
 
     reader.onload = function(event){
-      document.getElementById("fotoPreview").src = event.target.result; // 🔥 corrigido
+      document.getElementById("fotoPreview").src = event.target.result;
     };
 
     reader.readAsDataURL(file);
@@ -126,7 +138,9 @@ document.getElementById("inputFotoPerfil").addEventListener("change", function(e
 
 });
 
-// MÁSCARA TELEFONE (igual cliente)
+// =========================
+// MÁSCARA TELEFONE
+// =========================
 document.getElementById("telefone").addEventListener("input", function(e){
 
   let v = e.target.value.replace(/\D/g, "");
@@ -142,6 +156,43 @@ document.getElementById("telefone").addEventListener("input", function(e){
   }
 
   e.target.value = v;
+
+});
+
+// =========================
+// PREVIEW CNH
+// =========================
+document.getElementById("arquivoCNH").addEventListener("change", function(e){
+
+  const file = e.target.files[0];
+
+  if(!file) return;
+
+  const img = document.getElementById("imgCNH");
+  const pdf = document.getElementById("pdfCNH");
+
+  // IMAGEM
+  if(file.type.startsWith("image/")){
+
+    const reader = new FileReader();
+
+    reader.onload = function(event){
+      img.src = event.target.result;
+      img.style.display = "block";
+      pdf.style.display = "none";
+    };
+
+    reader.readAsDataURL(file);
+
+  } 
+  // PDF
+  else if(file.type === "application/pdf"){
+
+    img.style.display = "none";
+    pdf.style.display = "block";
+    pdf.innerText = "📄 " + file.name;
+
+  }
 
 });
 
