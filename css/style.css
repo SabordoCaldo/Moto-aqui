@@ -86,12 +86,12 @@ FORM
 }
 
 /*===========================
-INPUT
+INPUT (AJUSTE CIRÚRGICO)
 ===========================*/
 
 .input-box{
-  background:#111;
-  border:1px solid #333;
+  background:#fff;              /* ALTERADO */
+  border:1px solid #000;        /* ALTERADO */
   border-radius:12px;
   padding:14px;
   margin-bottom:15px;
@@ -101,10 +101,10 @@ INPUT
 
 .input-box input{
   width:100%;
-  background:none;
+  background:transparent;       /* ALTERADO */
   border:none;
   outline:none;
-  color:#fff;
+  color:#000;                   /* ALTERADO */
 }
 
 .input-box span{
