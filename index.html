@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
+<!-- =========================
+HEAD
+========================= -->
 <head>
 
 <meta charset="UTF-8">
@@ -11,35 +15,54 @@
 
 </head>
 
+<!-- =========================
+BODY
+========================= -->
 <body>
 
+<!-- =========================
+CONTAINER
+========================= -->
 <div class="container">
 
+  <!-- =========================
+  CARD
+  ========================= -->
   <div class="card">
 
-    <!-- LOGO -->
+    <!-- =========================
+    LOGO
+    ========================= -->
     <div class="logo-box">
       <img src="assets/logo.png">
     </div>
 
-    <!-- TEXTOS -->
+    <!-- =========================
+    TEXTOS
+    ========================= -->
     <p class="sub">App de mobilidade urbana</p>
     <h1>BEM-VINDO</h1>
 
-    <!-- FORM -->
+    <!-- =========================
+    FORMULÁRIO
+    ========================= -->
     <div class="form">
 
-      <!-- 🔥 ALTERADO: EMAIL OU CELULAR -->
-      <label>Email ou celular</label>
+      <!-- =========================
+      LOGIN
+      ========================= -->
+      <label>Login</label>
       <div class="input-box">
         <input 
           type="text" 
           id="email" 
           placeholder="Digite seu email ou celular"
-          style="background:white;color:black;border:1px solid black;"
         >
       </div>
 
+      <!-- =========================
+      SENHA
+      ========================= -->
       <label>Senha</label>
       <div class="input-box" style="position:relative;">
 
@@ -47,9 +70,11 @@
           type="password" 
           id="senha" 
           placeholder="Senha"
-          style="background:white;color:black;border:1px solid black;"
         >
 
+        <!-- =========================
+        OLHO SENHA
+        ========================= -->
         <span onclick="toggleSenha('senha')" 
         style="
           position:absolute;
@@ -58,31 +83,45 @@
           transform:translateY(-50%);
           cursor:pointer;
           font-size:18px;
-          color:black;
         ">
           👁️
         </span>
 
       </div>
 
+      <!-- =========================
+      OPÇÕES
+      ========================= -->
       <div class="opcoes">
         <label><input type="checkbox"> Salvar senha</label>
         <a href="#">Esqueci a senha</a>
       </div>
 
+      <!-- =========================
+      BOTÃO ENTRAR
+      ========================= -->
       <button class="btn" onclick="login()">Entrar</button>
 
+      <!-- =========================
+      CADASTRO
+      ========================= -->
       <p class="cadastro">
         Não tem conta?
         <a href="cadastro/escolha.html"><b>Cadastre-se</b></a>
       </p>
 
+      <!-- =========================
+      OU
+      ========================= -->
       <div class="ou">
         <span></span>
         <p>OU</p>
         <span></span>
       </div>
 
+      <!-- =========================
+      GMAIL
+      ========================= -->
       <button class="gmail">
         Entrar com conta Gmail
       </button>
@@ -93,6 +132,9 @@
 
 </div>
 
+<!-- =========================
+SCRIPTS
+========================= -->
 <script src="js/auth.js"></script>
 
 <script>
