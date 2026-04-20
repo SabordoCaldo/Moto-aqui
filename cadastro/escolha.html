@@ -7,6 +7,8 @@
 
 <link rel="stylesheet" href="../css/style.css">
 
+<title>Escolha</title>
+
 </head>
 
 <body>
@@ -14,29 +16,42 @@
 <div class="container">
   <div class="card">
 
-    <h1>Como você quer usar?</h1>
+    <!-- LOGO -->
+    <div style="text-align:center;">
+      <img src="../assets/logo.png" style="width:180px;">
+    </div>
 
-    <label>
-      <input type="radio" name="tipo" value="cliente"> Cliente
-    </label>
+    <!-- TEXTO -->
+    <p style="text-align:center;color:#f1c40f;">App de mobilidade urbana</p>
+    <h1 style="text-align:center;">Escolha eu sou</h1>
 
-    <label>
-      <input type="radio" name="tipo" value="motorista"> Motorista
-    </label>
+    <!-- BOTÕES -->
+    <button class="btn" onclick="selecionarTipo('cliente')" id="btnCliente" style="margin-bottom:10px;">
+      Cliente
+    </button>
 
-    <!-- CIDADE -->
+    <button class="btn" onclick="selecionarTipo('motorista')" id="btnMotorista" style="margin-bottom:20px;">
+      Motorista
+    </button>
+
+    <!-- CIDADE (AGORA SELECT) -->
     <label>Cidade</label>
 
-    <select id="cidade" class="input-box">
+    <select id="cidade" class="input-box" style="background:white;color:black;">
+
       <option value="">Selecione sua cidade</option>
+
       <option value="Passos">Passos</option>
       <option value="Alpinópolis">Alpinópolis</option>
       <option value="Bom Jesus da Penha">Bom Jesus da Penha</option>
       <option value="Itaú de Minas">Itaú de Minas</option>
       <option value="São João Batista do Glória">São João Batista do Glória</option>
+
     </select>
 
     <!-- TERMOS -->
+    <h3>Termos e Privacidade</h3>
+
     <div id="boxTermos" style="
       height:150px;
       overflow-y:scroll;
@@ -49,10 +64,17 @@
 
     <label id="labelTermos" style="opacity:0.5;">
       <input type="checkbox" id="termos" disabled>
-      Li e aceito os termos
+      Estou ciente e aceito os termos
     </label>
 
-    <button class="btn" onclick="continuar()">Continuar</button>
+    <!-- BOTÃO -->
+    <button class="btn" id="btnContinuar" onclick="continuar()" disabled>
+      Continuar
+    </button>
+
+    <p style="text-align:center;">
+      <a href="../index.html">Voltar</a>
+    </p>
 
   </div>
 </div>
@@ -62,18 +84,26 @@
 
 <script>
 
+let tipoSelecionado = null;
+
 const box = document.getElementById("boxTermos");
 const checkbox = document.getElementById("termos");
 const label = document.getElementById("labelTermos");
+const botao = document.getElementById("btnContinuar");
+
+// LISTA DE CIDADES (mantida)
+const cidadesValidas = [
+  "Passos",
+  "Alpinópolis",
+  "Bom Jesus da Penha",
+  "Itaú de Minas",
+  "São João Batista do Glória"
+];
 
 // CARREGA TERMOS
 box.innerHTML = termosApp.texto;
 
-// BLOQUEIO INICIAL
-checkbox.disabled = true;
-label.style.opacity = "0.5";
-
-// LIBERA AO FINAL
+// LIBERA CHECKBOX NO FINAL
 box.addEventListener("scroll", function(){
 
   const chegouFinal = box.scrollTop + box.clientHeight >= box.scrollHeight - 2;
@@ -84,6 +114,39 @@ box.addEventListener("scroll", function(){
   }
 
 });
+
+// SELEÇÃO BOTÃO
+function selecionarTipo(tipo){
+
+  tipoSelecionado = tipo;
+
+  document.getElementById("btnCliente").style.opacity = tipo === "cliente" ? "1" : "0.5";
+  document.getElementById("btnMotorista").style.opacity = tipo === "motorista" ? "1" : "0.5";
+
+  verificar();
+}
+
+// VALIDAÇÃO
+function verificar(){
+
+  const cidade = document.getElementById("cidade").value;
+  const termos = checkbox.checked;
+
+  const cidadeValida = cidadesValidas.includes(cidade);
+
+  if(tipoSelecionado && cidadeValida && termos){
+    botao.disabled = false;
+    botao.style.opacity = "1";
+  }else{
+    botao.disabled = true;
+    botao.style.opacity = "0.5";
+  }
+
+}
+
+// EVENTOS (ALTERADO PARA CHANGE)
+document.getElementById("cidade").addEventListener("change", verificar);
+checkbox.addEventListener("change", verificar);
 
 </script>
 
