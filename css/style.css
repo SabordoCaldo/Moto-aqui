@@ -90,8 +90,8 @@ INPUT (AJUSTE CIRÚRGICO)
 ===========================*/
 
 .input-box{
-  background:#fff;              /* ALTERADO */
-  border:1px solid #000;        /* ALTERADO */
+  background:#fff;
+  border:1px solid #000;
   border-radius:12px;
   padding:14px;
   margin-bottom:15px;
@@ -101,10 +101,10 @@ INPUT (AJUSTE CIRÚRGICO)
 
 .input-box input{
   width:100%;
-  background:transparent;       /* ALTERADO */
-  border:none;
+  background:transparent;
+  border:none;       /* 🔥 remove borda interna */
   outline:none;
-  color:#000;                   /* ALTERADO */
+  color:#000;
 }
 
 .input-box span{
