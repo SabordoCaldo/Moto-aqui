@@ -40,3 +40,45 @@ function cadastrar(){
   // IR PRA HOME
   window.location.href = "cliente-home.html";
 }
+
+function enviarMotorista(){
+
+  const nome = document.getElementById("nome").value.trim();
+  const telefone = document.getElementById("telefone").value.trim();
+  const endereco = document.getElementById("endereco").value.trim();
+  const cnh = document.getElementById("cnh").value.trim();
+  const arquivo = document.getElementById("arquivoCNH").files[0];
+
+  if(!nome){
+    alert("Digite seu nome");
+    return;
+  }
+
+  if(!telefone){
+    alert("Digite seu telefone");
+    return;
+  }
+
+  if(!endereco){
+    alert("Digite seu endereço");
+    return;
+  }
+
+  if(!cnh){
+    alert("Digite o número da CNH");
+    return;
+  }
+
+  if(!arquivo){
+    alert("Envie a CNH (foto ou PDF)");
+    return;
+  }
+
+  // SIMULA ENVIO
+  localStorage.setItem("motorista_nome", nome);
+  localStorage.setItem("motorista_status", "pendente");
+
+  alert("Cadastro enviado para aprovação!");
+
+  window.location.href = "../index.html";
+}
