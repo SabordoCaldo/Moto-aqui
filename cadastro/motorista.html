@@ -33,7 +33,8 @@ BODY
     ========================= -->
     <div class="foto-perfil" onclick="escolherFotoPerfil()">
 
-      <img id="fotoPerfil" src="../assets/user-motorista.png">
+      <!-- 🔥 PADRONIZADO -->
+      <img id="fotoPreview" src="../assets/user-motorista.png">
 
       <div class="add">+</div>
 
@@ -74,7 +75,7 @@ BODY
     </div>
 
     <!-- =========================
-    FOTO / PDF CNH
+    CNH ARQUIVO
     ========================= -->
     <label>CNH (Foto ou PDF)</label>
     <div class="input-box">
@@ -108,6 +109,7 @@ function escolherFotoPerfil(){
   document.getElementById("inputFotoPerfil").click();
 }
 
+// PREVIEW FOTO
 document.getElementById("inputFotoPerfil").addEventListener("change", function(e){
 
   const file = e.target.files[0];
@@ -116,7 +118,7 @@ document.getElementById("inputFotoPerfil").addEventListener("change", function(e
     const reader = new FileReader();
 
     reader.onload = function(event){
-      document.getElementById("fotoPerfil").src = event.target.result;
+      document.getElementById("fotoPreview").src = event.target.result; // 🔥 corrigido
     };
 
     reader.readAsDataURL(file);
@@ -124,7 +126,7 @@ document.getElementById("inputFotoPerfil").addEventListener("change", function(e
 
 });
 
-// MÁSCARA TELEFONE
+// MÁSCARA TELEFONE (igual cliente)
 document.getElementById("telefone").addEventListener("input", function(e){
 
   let v = e.target.value.replace(/\D/g, "");
