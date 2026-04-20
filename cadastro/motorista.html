@@ -74,24 +74,22 @@ BODY
     </div>
 
     <!-- =========================
-    CNH ARQUIVO
+    CNH COMO BOTÃO (IGUAL FOTO)
     ========================= -->
-    <label>CNH (Foto ou PDF)</label>
-    <div class="input-box">
-      <input type="file" id="arquivoCNH" accept="image/*,.pdf">
+    <label>CNH (toque para enviar)</label>
+
+    <div class="foto-perfil" onclick="escolherCNH()" style="width:140px;height:90px;border-radius:10px;">
+
+      <img id="imgCNH" src="../assets/cnh-exemplo.png" style="object-fit:cover;">
+
+      <div class="add">+</div>
+
+      <input type="file" id="inputCNH" accept="image/*,.pdf">
+
     </div>
 
-    <!-- =========================
-    PREVIEW CNH
-    ========================= -->
-    <div id="previewCNH" style="margin-top:10px; text-align:center;">
-
-      <!-- 🔥 IMAGEM PADRÃO -->
-      <img id="imgCNH" src="../assets/cnh-exemplo.png" style="width:120px; border-radius:10px;">
-
-      <p id="pdfCNH" style="font-size:12px; display:none;"></p>
-
-    </div>
+    <!-- TEXTO PDF -->
+    <p id="pdfCNH" style="font-size:12px; display:none; text-align:center;"></p>
 
     <!-- =========================
     BOTÃO
@@ -139,30 +137,13 @@ document.getElementById("inputFotoPerfil").addEventListener("change", function(e
 });
 
 // =========================
-// MÁSCARA TELEFONE
+// CNH COMO BOTÃO
 // =========================
-document.getElementById("telefone").addEventListener("input", function(e){
+function escolherCNH(){
+  document.getElementById("inputCNH").click();
+}
 
-  let v = e.target.value.replace(/\D/g, "");
-
-  if(v.length > 11) v = v.slice(0,11);
-
-  if(v.length > 6){
-    v = v.replace(/^(\d{2})(\d{5})(\d{0,4})$/, "($1) $2-$3");
-  }else if(v.length > 2){
-    v = v.replace(/^(\d{2})(\d{0,5})$/, "($1) $2");
-  }else{
-    v = v.replace(/^(\d*)$/, "($1");
-  }
-
-  e.target.value = v;
-
-});
-
-// =========================
-// PREVIEW CNH
-// =========================
-document.getElementById("arquivoCNH").addEventListener("change", function(e){
+document.getElementById("inputCNH").addEventListener("change", function(e){
 
   const file = e.target.files[0];
 
@@ -193,6 +174,27 @@ document.getElementById("arquivoCNH").addEventListener("change", function(e){
     pdf.innerText = "📄 " + file.name;
 
   }
+
+});
+
+// =========================
+// TELEFONE
+// =========================
+document.getElementById("telefone").addEventListener("input", function(e){
+
+  let v = e.target.value.replace(/\D/g, "");
+
+  if(v.length > 11) v = v.slice(0,11);
+
+  if(v.length > 6){
+    v = v.replace(/^(\d{2})(\d{5})(\d{0,4})$/, "($1) $2-$3");
+  }else if(v.length > 2){
+    v = v.replace(/^(\d{2})(\d{0,5})$/, "($1) $2");
+  }else{
+    v = v.replace(/^(\d*)$/, "($1");
+  }
+
+  e.target.value = v;
 
 });
 
