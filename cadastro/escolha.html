@@ -34,7 +34,7 @@
       Motorista
     </button>
 
-    <!-- CIDADE (AGORA SELECT) -->
+    <!-- CIDADE -->
     <label>Cidade</label>
 
     <select id="cidade" class="input-box" style="background:white;color:black;">
@@ -91,7 +91,6 @@ const checkbox = document.getElementById("termos");
 const label = document.getElementById("labelTermos");
 const botao = document.getElementById("btnContinuar");
 
-// LISTA DE CIDADES (mantida)
 const cidadesValidas = [
   "Passos",
   "Alpinópolis",
@@ -103,7 +102,7 @@ const cidadesValidas = [
 // CARREGA TERMOS
 box.innerHTML = termosApp.texto;
 
-// LIBERA CHECKBOX NO FINAL
+// LIBERA CHECKBOX
 box.addEventListener("scroll", function(){
 
   const chegouFinal = box.scrollTop + box.clientHeight >= box.scrollHeight - 2;
@@ -115,11 +114,9 @@ box.addEventListener("scroll", function(){
 
 });
 
-// SELEÇÃO BOTÃO
+// 🔥 CORREÇÃO AQUI (REMOVIDO DUPLICADO)
 function selecionarTipo(tipo){
   window.tipoSelecionado = tipo;
-
-  tipoSelecionado = tipo;
 
   document.getElementById("btnCliente").style.opacity = tipo === "cliente" ? "1" : "0.5";
   document.getElementById("btnMotorista").style.opacity = tipo === "motorista" ? "1" : "0.5";
@@ -127,7 +124,7 @@ function selecionarTipo(tipo){
   verificar();
 }
 
-// VALIDAÇÃO
+// 🔥 CORREÇÃO AQUI (USANDO WINDOW)
 function verificar(){
 
   const cidade = document.getElementById("cidade").value;
@@ -135,7 +132,7 @@ function verificar(){
 
   const cidadeValida = cidadesValidas.includes(cidade);
 
-  if(tipoSelecionado && cidadeValida && termos){
+  if(window.tipoSelecionado && cidadeValida && termos){
     botao.disabled = false;
     botao.style.opacity = "1";
   }else{
@@ -145,7 +142,7 @@ function verificar(){
 
 }
 
-// EVENTOS (ALTERADO PARA CHANGE)
+// EVENTOS
 document.getElementById("cidade").addEventListener("change", verificar);
 checkbox.addEventListener("change", verificar);
 
