@@ -84,7 +84,7 @@
 
 <script>
 
-let tipoSelecionado = null;
+window.tipoSelecionado = null;
 
 const box = document.getElementById("boxTermos");
 const checkbox = document.getElementById("termos");
@@ -117,6 +117,7 @@ box.addEventListener("scroll", function(){
 
 // SELEÇÃO BOTÃO
 function selecionarTipo(tipo){
+  window.tipoSelecionado = tipo;
 
   tipoSelecionado = tipo;
 
