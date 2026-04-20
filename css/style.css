@@ -86,7 +86,7 @@ FORM
 }
 
 /*===========================
-INPUT (AJUSTE CIRÚRGICO)
+INPUT
 ===========================*/
 
 .input-box{
@@ -102,7 +102,7 @@ INPUT (AJUSTE CIRÚRGICO)
 .input-box input{
   width:100%;
   background:transparent;
-  border:none;       /* 🔥 remove borda interna */
+  border:none;
   outline:none;
   color:#000;
 }
@@ -201,7 +201,7 @@ OLHO SENHA
 }
 
 /*===========================
-FOTO PERFIL (AJUSTE MANUAL)
+FOTO PERFIL
 ===========================*/
 
 .foto-perfil{
@@ -212,13 +212,6 @@ FOTO PERFIL (AJUSTE MANUAL)
   border-radius:50%;
   overflow:hidden;
   background:#eee;
-}
-
-#canvasFoto{
-  width:100%;
-  height:100%;
-  border-radius:50%;
-  touch-action:none;
 }
 
 .foto-perfil input{
@@ -239,6 +232,14 @@ FOTO PERFIL (AJUSTE MANUAL)
   justify-content:center;
   font-weight:bold;
   font-size:20px;
+}
+
+/* 🔥 AJUSTE CIRÚRGICO (IMAGEM PERFIL) */
+#fotoPreview{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
 }
 
 /*===========================
