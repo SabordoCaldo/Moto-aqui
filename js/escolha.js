@@ -25,10 +25,22 @@ function getArquivoCidade(cidade){
 
 function continuar(){
 
+  const tipo = document.querySelector('input[name="tipo"]:checked');
   const cidade = document.getElementById("cidade").value;
+  const termos = document.getElementById("termos").checked;
 
-  if(!tipoSelecionado){
+  if(!tipo){
     alert("Selecione cliente ou motorista");
+    return;
+  }
+
+  if(!cidade){
+    alert("Selecione a cidade");
+    return;
+  }
+
+  if(!termos){
+    alert("Aceite os termos");
     return;
   }
 
@@ -45,14 +57,14 @@ function continuar(){
   script.onload = function(){
 
     if(!cidadeConfig.ativa){
-      alert("Ainda não estamos na sua cidade 😔");
+      alert("Desculpe, ainda não está em sua cidade 😔");
       return;
     }
 
     localStorage.setItem("cidade", cidade);
-    localStorage.setItem("tipo", tipoSelecionado);
+    localStorage.setItem("tipo", tipo.value);
 
-    if(tipoSelecionado === "cliente"){
+    if(tipo.value === "cliente"){
       window.location.href = "cliente.html";
     }else{
       window.location.href = "motorista.html";
