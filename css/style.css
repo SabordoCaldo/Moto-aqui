@@ -1,4 +1,251 @@
 /*===========================
+GERAL
+===========================*/
+
+html, body{
+  margin:0;
+  padding:0;
+  width:100%;
+  min-height:100vh;
+  font-family:Arial;
+  background:#ffffff;
+  color:#000;
+}
+
+/*===========================
+CONTAINER
+===========================*/
+
+.container{
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
+  min-height:80vh;
+  padding:15px;
+}
+
+/*===========================
+CARD
+===========================*/
+
+.card{
+  width:100%;
+  max-width:380px;
+  margin:0 auto;
+  background:#ffffff;
+  border-radius:25px;
+  padding:15px 20px 25px;
+  border:1px solid #e5e5e5;
+  min-height:85vh;
+}
+
+/*===========================
+LOGO
+===========================*/
+
+.logo-box{
+  width:300px;
+  height:300px;
+  margin:0 auto 10px;
+  background:#fff;
+  border-radius:20px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+.logo-box img{
+  width:80%;
+}
+
+/*===========================
+TEXTOS
+===========================*/
+
+.sub{
+  text-align:center;
+  color:#FFD600;
+  font-size:24px;
+  margin-top:-50px;
+  margin-bottom:5px;
+}
+
+h1{
+  text-align:center;
+  font-size:30px;
+  margin-bottom:20px;
+}
+
+/*===========================
+FORM
+===========================*/
+
+.form{
+  width:100%;
+}
+
+/*===========================
+INPUT (MANTIDO ORIGINAL)
+===========================*/
+
+.input-box{
+  background:#111;
+  border:1px solid #333;
+  border-radius:12px;
+  padding:14px;
+  margin-bottom:15px;
+  display:flex;
+  align-items:center;
+}
+
+.input-box input{
+  width:100%;
+  background:none;
+  border:none;
+  outline:none;
+  color:#fff;
+}
+
+.input-box span{
+  margin-left:10px;
+}
+
+/*===========================
+OPÇÕES
+===========================*/
+
+.opcoes{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  font-size:14px;
+  margin-bottom:15px;
+}
+
+.opcoes a{
+  color:#FFD600;
+}
+
+/*===========================
+BOTÃO
+===========================*/
+
+.btn{
+  width:100%;
+  padding:15px;
+  border:none;
+  border-radius:12px;
+  background:#FFD600;
+  color:#000;
+  font-size:17px;
+  font-weight:bold;
+}
+
+/*===========================
+CADASTRO
+===========================*/
+
+.cadastro{
+  text-align:center;
+  margin-top:15px;
+}
+
+.cadastro b{
+  color:#FFD600;
+}
+
+/*===========================
+OU
+===========================*/
+
+.ou{
+  display:flex;
+  align-items:center;
+  margin:20px 0;
+}
+
+.ou span{
+  flex:1;
+  height:1px;
+  background:#333;
+}
+
+.ou p{
+  margin:0 10px;
+  color:#aaa;
+}
+
+/*===========================
+GMAIL
+===========================*/
+
+.gmail{
+  width:100%;
+  padding:15px;
+  border-radius:12px;
+  background:#111;
+  color:#fff;
+  border:1px solid #333;
+}
+
+/*===========================
+OLHO SENHA
+===========================*/
+
+.eye{
+  margin-left:10px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+}
+
+/*===========================
+FOTO PERFIL
+===========================*/
+
+.foto-perfil{
+  position:relative;
+  width:120px;
+  height:120px;
+  margin:0 auto 20px;
+  border-radius:50%;
+  overflow:hidden; /* voltou ao original */
+  background:#eee;
+}
+
+.foto-perfil input{
+  display:none;
+}
+
+.foto-perfil .add{
+  position:absolute;
+  bottom:0;
+  right:0;
+  background:#FFD600;
+  color:#000;
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:bold;
+  font-size:20px;
+}
+
+/*===========================
+IMAGEM PERFIL (NOVO)
+===========================*/
+
+#fotoPreview{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+}
+
+/*===========================
 CNH BOX (NOVO)
 ===========================*/
 
@@ -33,3 +280,24 @@ CNH BOX (NOVO)
   font-weight:bold;
   font-size:18px;
 }
+
+/*===========================
+ZOOM BOTÕES
+===========================*/
+
+.zoom-controls{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  margin-bottom:15px;
+}
+
+.zoom-controls button{
+  width:45px;
+  height:45px;
+  border:none;
+  border-radius:10px;
+  background:#FFD600;
+  font-size:20px;
+  font-weight:bold;
+  }
