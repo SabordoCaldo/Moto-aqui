@@ -20,14 +20,7 @@ BODY
 ========================= -->
 <body>
 
-<!-- =========================
-CONTAINER
-========================= -->
 <div class="container">
-
-  <!-- =========================
-  CARD
-  ========================= -->
   <div class="card">
 
     <!-- =========================
@@ -101,7 +94,6 @@ CONTAINER
     </p>
 
   </div>
-
 </div>
 
 <!-- =========================
@@ -112,18 +104,7 @@ SCRIPTS
 <script>
 
 function escolherFoto(){
-
-  const escolha = confirm("OK = Câmera\nCancelar = Galeria");
-
-  const input = document.getElementById("inputFoto");
-
-  if(escolha){
-    input.setAttribute("capture", "environment");
-  }else{
-    input.removeAttribute("capture");
-  }
-
-  input.click();
+  document.getElementById("inputFoto").click();
 }
 
 // PREVIEW FOTO
