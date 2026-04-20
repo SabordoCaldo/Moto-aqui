@@ -29,15 +29,26 @@
     <!-- FORM -->
     <div class="form">
 
-      <label>Email</label>
+      <!-- 🔥 ALTERADO: EMAIL OU CELULAR -->
+      <label>Email ou celular</label>
       <div class="input-box">
-        <input type="text" id="email" placeholder="E-mail">
+        <input 
+          type="text" 
+          id="email" 
+          placeholder="Digite seu email ou celular"
+          style="background:white;color:black;border:1px solid black;"
+        >
       </div>
 
       <label>Senha</label>
       <div class="input-box" style="position:relative;">
 
-        <input type="password" id="senha" placeholder="Senha">
+        <input 
+          type="password" 
+          id="senha" 
+          placeholder="Senha"
+          style="background:white;color:black;border:1px solid black;"
+        >
 
         <span onclick="toggleSenha('senha')" 
         style="
@@ -47,6 +58,7 @@
           transform:translateY(-50%);
           cursor:pointer;
           font-size:18px;
+          color:black;
         ">
           👁️
         </span>
@@ -71,7 +83,6 @@
         <span></span>
       </div>
 
-      <!-- GOOGLE -->
       <button class="gmail">
         Entrar com conta Gmail
       </button>
@@ -85,6 +96,7 @@
 <script src="js/auth.js"></script>
 
 <script>
+
 function toggleSenha(id){
 
   const input = document.getElementById(id);
@@ -96,6 +108,7 @@ function toggleSenha(id){
   }
 
 }
+
 </script>
 
 </body>
