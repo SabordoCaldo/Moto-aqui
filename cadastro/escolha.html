@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Cadastro</title>
+<title>Escolha</title>
 
 <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -22,26 +22,32 @@
 </div>
 
 <!-- TÍTULO -->
-<h1 style="text-align:center;">CADASTRO</h1>
+<h1 style="text-align:center;">ESCOLHA</h1>
 
 <!-- BOTÕES -->
-<button class="btn" style="font-size:19px;" onclick="selecionarTipo('cliente')">
+<button class="btn" 
+style="font-size:19px; margin-bottom:15px;" 
+onclick="selecionarTipo('cliente')">
   Sou Cliente
 </button>
 
-<button class="btn" style="font-size:19px;" onclick="selecionarTipo('motorista')">
+<button class="btn" 
+style="font-size:19px; margin-bottom:20px;" 
+onclick="selecionarTipo('motorista')">
   Sou Motorista
 </button>
 
 <!-- CIDADE -->
 <label>Cidade</label>
 
-<div class="input-box">
-  <input type="text" id="cidadeBusca" placeholder="Digite sua cidade">
-</div>
-
-<select id="cidadeSelect" style="width:100%; padding:12px; border-radius:10px; margin-bottom:15px;">
+<select id="cidadeSelect" 
+style="width:100%; padding:12px; border-radius:10px; margin-bottom:15px;">
   <option value="">Selecione a cidade</option>
+  <option value="passos">Passos</option>
+  <option value="alpinopolis">Alpinópolis</option>
+  <option value="bom-jesus">Bom Jesus</option>
+  <option value="gloria">Glória</option>
+  <option value="itau">Itaú</option>
 </select>
 
 <!-- TERMOS -->
@@ -52,14 +58,14 @@ style="width:100%; height:120px; border-radius:10px; padding:10px;"
 readonly></textarea>
 
 <!-- ACEITE -->
-<label style="display:block; margin-top:15px; font-weight:bold;">
+<label style="display:block; margin-top:20px; font-weight:bold;">
   <input type="checkbox" id="aceite">
   ESTOU CIENTE E ACEITO OS TERMOS
 </label>
 
 <!-- BOTÃO -->
 <button class="btn" id="continuar"
-disabled style="margin-top:20px; opacity:0.5;">
+disabled style="margin-top:25px; opacity:0.5;">
 Continuar
 </button>
 
@@ -74,61 +80,25 @@ Continuar
 SCRIPTS
 ========================= -->
 
-<!-- TERMOS -->
 <script src="../termos/termos.js"></script>
 
-<!-- CIDADES -->
-<script src="../cidades/passos.js"></script>
-<script src="../cidades/alpinopolis.js"></script>
-<script src="../cidades/bom-jesus.js"></script>
-<script src="../cidades/gloria.js"></script>
-<script src="../cidades/itau.js"></script>
-
 <script>
-
 let tipoSelecionado = "";
 let cidadeValida = false;
 
-/* =========================
-CARREGAR TERMOS
-========================= */
+/* TERMOS */
 if(window.termosTexto){
   document.getElementById("termosBox").value = window.termosTexto;
 }
 
-/* =========================
-CARREGAR CIDADES
-========================= */
-
-const cidades = [
-  {nome: "Passos", status: "ativo"},
-  {nome: "Alpinópolis", status: "indisponivel"},
-  {nome: "Bom Jesus", status: "indisponivel"},
-  {nome: "Glória", status: "indisponivel"},
-  {nome: "Itaú", status: "indisponivel"}
-];
-
-const select = document.getElementById("cidadeSelect");
-
-cidades.forEach(c => {
-  const opt = document.createElement("option");
-  opt.value = c.nome.toLowerCase();
-  opt.textContent = c.nome;
-  select.appendChild(opt);
-});
-
-/* =========================
-TIPO
-========================= */
+/* TIPO */
 function selecionarTipo(tipo){
   tipoSelecionado = tipo;
   validar();
 }
 
-/* =========================
-CIDADE
-========================= */
-select.addEventListener("change", function(){
+/* CIDADE */
+document.getElementById("cidadeSelect").addEventListener("change", function(){
 
   const cidade = this.value;
 
@@ -142,34 +112,11 @@ select.addEventListener("change", function(){
   validar();
 });
 
-/* =========================
-BUSCA
-========================= */
-document.getElementById("cidadeBusca").addEventListener("input", function(){
-
-  const busca = this.value.toLowerCase();
-
-  for(let i = 0; i < select.options.length; i++){
-    const opt = select.options[i];
-
-    if(opt.value.includes(busca)){
-      select.selectedIndex = i;
-      break;
-    }
-  }
-
-});
-
-/* =========================
-ACEITE
-========================= */
+/* ACEITE */
 document.getElementById("aceite").addEventListener("change", validar);
 
-/* =========================
-VALIDAÇÃO
-========================= */
+/* VALIDAR */
 function validar(){
-
   const aceito = document.getElementById("aceite").checked;
   const btn = document.getElementById("continuar");
 
@@ -182,9 +129,7 @@ function validar(){
   }
 }
 
-/* =========================
-CONTINUAR
-========================= */
+/* CONTINUAR */
 document.getElementById("continuar").addEventListener("click", function(){
 
   if(tipoSelecionado === "cliente"){
@@ -196,7 +141,6 @@ document.getElementById("continuar").addEventListener("click", function(){
   }
 
 });
-
 </script>
 
 </body>
