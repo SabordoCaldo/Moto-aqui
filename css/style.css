@@ -38,3 +38,120 @@ html, body{
   font-size:17px;
   font-weight:bold;
 }
+
+/* =========================
+LOGIN (ESTILO ORIGINAL)
+========================= */
+
+body.login{
+  background:#f5f5f5;
+}
+
+/* CARD */
+body.login .card{
+  background:#fff;
+  border:1px solid #ddd;
+}
+
+/* INPUT */
+body.login .input-box{
+  background:#eee;
+  border:1px solid #999;
+  border-radius:15px;
+  padding:10px 12px;
+}
+
+body.login .input-box input{
+  color:#000;
+}
+
+/* TEXTO AMARELO */
+body.login .sub{
+  text-align:center;
+  color:#FFD600;
+  font-size:20px;
+  margin-bottom:10px;
+}
+
+/* BOTÃO */
+body.login .btn{
+  border-radius:15px;
+  margin-top:10px;
+}
+
+/* GMAIL */
+body.login .gmail{
+  width:100%;
+  padding:15px;
+  border-radius:15px;
+  background:#000;
+  color:#fff;
+  border:none;
+}
+
+/* LINHA OU */
+body.login .ou{
+  display:flex;
+  align-items:center;
+  margin:20px 0;
+}
+
+body.login .ou span{
+  flex:1;
+  height:1px;
+  background:#999;
+}
+
+body.login .ou p{
+  margin:0 10px;
+  color:#999;
+}
+
+/* OPÇÕES */
+body.login .opcoes{
+  display:flex;
+  justify-content:space-between;
+  font-size:14px;
+  margin-top:10px;
+}
+
+/* =========================
+OLHO PROFISSIONAL
+========================= */
+
+body.login .eye{
+  position:absolute;
+  right:12px;
+  top:50%;
+  transform:translateY(-50%);
+  width:22px;
+  height:22px;
+  cursor:pointer;
+}
+
+body.login .eye svg{
+  width:100%;
+  height:100%;
+}
+
+body.login .eye path{
+  stroke:#777;
+  stroke-width:2;
+  fill:none;
+}
+
+/* ATIVO (VERMELHO) */
+body.login .eye.off path{
+  stroke:red;
+}
+
+body.login .eye.off::after{
+  content:"";
+  position:absolute;
+  width:22px;
+  height:2px;
+  background:red;
+  transform:rotate(45deg);
+  top:50%;
+  left:0;
+}
