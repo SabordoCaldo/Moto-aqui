@@ -1,7 +1,6 @@
 /*===========================
 GERAL
 ===========================*/
-
 html, body{
   margin:0;
   padding:0;
@@ -15,7 +14,6 @@ html, body{
 /*===========================
 CONTAINER
 ===========================*/
-
 .container{
   display:flex;
   justify-content:center;
@@ -27,7 +25,6 @@ CONTAINER
 /*===========================
 CARD
 ===========================*/
-
 .card{
   width:100%;
   max-width:380px;
@@ -42,7 +39,6 @@ CARD
 /*===========================
 LOGO
 ===========================*/
-
 .logo-box{
   width:300px;
   height:300px;
@@ -62,7 +58,6 @@ LOGO
 /*===========================
 TEXTOS
 ===========================*/
-
 .sub{
   text-align:center;
   color:#FFD600;
@@ -80,18 +75,17 @@ h1{
 /*===========================
 FORM
 ===========================*/
-
 .form{
   width:100%;
 }
 
 /*===========================
-INPUT (MANTIDO ORIGINAL)
+INPUT (FINAL LIMPO)
 ===========================*/
-
 .input-box{
-  background:#111;
-  border:1px solid #333;
+  position:relative;
+  background:#fff;
+  border:1px solid #000;
   border-radius:12px;
   padding:14px;
   margin-bottom:15px;
@@ -101,20 +95,50 @@ INPUT (MANTIDO ORIGINAL)
 
 .input-box input{
   width:100%;
-  background:none;
+  background:transparent;
   border:none;
   outline:none;
-  color:#fff;
+  color:#000;
+  padding-right:35px; /* espaço pro olho */
 }
 
-.input-box span{
-  margin-left:10px;
+/*===========================
+OLHO SENHA
+===========================*/
+.eye{
+  position:absolute;
+  right:10px;
+  top:50%;
+  transform:translateY(-50%);
+  width:20px;
+  height:20px;
+  cursor:pointer;
+}
+
+.eye path{
+  stroke:#777;
+  stroke-width:2;
+  fill:none;
+}
+
+.eye.off path{
+  stroke:red;
+}
+
+.eye.off::after{
+  content:"";
+  position:absolute;
+  width:20px;
+  height:2px;
+  background:red;
+  transform:rotate(45deg);
+  top:50%;
+  left:0;
 }
 
 /*===========================
 OPÇÕES
 ===========================*/
-
 .opcoes{
   display:flex;
   justify-content:space-between;
@@ -130,7 +154,6 @@ OPÇÕES
 /*===========================
 BOTÃO
 ===========================*/
-
 .btn{
   width:100%;
   padding:15px;
@@ -145,7 +168,6 @@ BOTÃO
 /*===========================
 CADASTRO
 ===========================*/
-
 .cadastro{
   text-align:center;
   margin-top:15px;
@@ -158,7 +180,6 @@ CADASTRO
 /*===========================
 OU
 ===========================*/
-
 .ou{
   display:flex;
   align-items:center;
@@ -179,7 +200,6 @@ OU
 /*===========================
 GMAIL
 ===========================*/
-
 .gmail{
   width:100%;
   padding:15px;
@@ -190,28 +210,24 @@ GMAIL
 }
 
 /*===========================
-OLHO SENHA
-===========================*/
-
-.eye{
-  margin-left:10px;
-  cursor:pointer;
-  display:flex;
-  align-items:center;
-}
-
-/*===========================
 FOTO PERFIL
 ===========================*/
-
 .foto-perfil{
   position:relative;
   width:120px;
   height:120px;
   margin:0 auto 20px;
   border-radius:50%;
-  overflow:hidden; /* voltou ao original */
+  overflow:hidden;
   background:#eee;
+  cursor:pointer;
+}
+
+#fotoPreview{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
 }
 
 .foto-perfil input{
@@ -235,20 +251,8 @@ FOTO PERFIL
 }
 
 /*===========================
-IMAGEM PERFIL (NOVO)
+CNH BOX
 ===========================*/
-
-#fotoPreview{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  border-radius:50%;
-}
-
-/*===========================
-CNH BOX (NOVO)
-===========================*/
-
 .cnh-box{
   position:relative;
   width:140px;
@@ -257,6 +261,8 @@ CNH BOX (NOVO)
   border-radius:10px;
   overflow:hidden;
   background:#eee;
+  border:2px dashed #ccc;
+  cursor:pointer;
 }
 
 .cnh-box img{
@@ -270,21 +276,49 @@ CNH BOX (NOVO)
   bottom:-5px;
   right:-5px;
   background:#FFD600;
-  color:#000;
-  width:28px;
-  height:28px;
+  width:30px;
+  height:30px;
   border-radius:50%;
   display:flex;
   align-items:center;
   justify-content:center;
-  font-weight:bold;
-  font-size:18px;
+}
+
+/*===========================
+PDF CNH
+===========================*/
+#pdfCNH{
+  text-align:center;
+  font-size:13px;
+  margin-top:8px;
+  color:#555;
+}
+
+/*===========================
+MODAL PREVIEW
+===========================*/
+#modalImg{
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.9);
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+}
+
+#modalImg img{
+  max-width:90%;
+  max-height:90%;
+  border-radius:12px;
 }
 
 /*===========================
 ZOOM BOTÕES
 ===========================*/
-
 .zoom-controls{
   display:flex;
   justify-content:center;
@@ -300,73 +334,4 @@ ZOOM BOTÕES
   background:#FFD600;
   font-size:20px;
   font-weight:bold;
-  }
-
-/*===========================
-INPUT PADRÃO CLARO
-===========================*/
-
-.input-box{
-  background:#fff !important;
-  border:1px solid #000 !important;
-}
-
-.input-box input{
-  color:#000 !important;
-  background:transparent;
-}
-
-/* OLHO */
-.input-box{
-  position: relative;
-}
-
-.eye{
-  position: absolute;
-  right: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 22px;
-  height: 22px;
-  cursor: pointer;
-}
-
-.eye path{
-  stroke: #777;
-  stroke-width: 2;
-  fill: none;
-}
-
-.eye.off path{
-  stroke: red;
-}
-
-/* CNH */
-.cnh-box{
-  position: relative;
-  width: 140px;
-  height: 90px;
-  margin: 10px auto;
-  border-radius: 10px;
-  overflow: hidden;
-  border: 2px dashed #ccc;
-}
-
-.cnh-box img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.cnh-box .add{
-  position: absolute;
-  bottom: -5px;
-  right: -5px;
-  background: #FFD600;
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
