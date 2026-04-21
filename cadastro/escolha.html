@@ -25,13 +25,13 @@
 <h1 style="text-align:center;">ESCOLHA</h1>
 
 <!-- BOTÕES -->
-<button class="btn" 
+<button id="btnCliente" class="btn" 
 style="font-size:19px; margin-bottom:15px;" 
 onclick="selecionarTipo('cliente')">
   Sou Cliente
 </button>
 
-<button class="btn" 
+<button id="btnMotorista" class="btn" 
 style="font-size:19px; margin-bottom:20px;" 
 onclick="selecionarTipo('motorista')">
   Sou Motorista
@@ -89,40 +89,46 @@ Continuar
 SCRIPTS
 ========================= -->
 
-<!-- 🔥 IMPORTANTE: força atualização -->
 <script src="../termos/termos.js?v=1"></script>
 
 <script>
 let tipoSelecionado = "";
 let cidadeValida = false;
 
-/* =========================
-CARREGAR TERMOS (CORRIGIDO)
-========================= */
+/* TERMOS */
 window.addEventListener("load", function(){
-
   const box = document.getElementById("termosBox");
 
   if(window.termosApp){
     box.innerHTML = window.termosApp.texto;
   }else{
     box.innerHTML = "Erro ao carregar termos";
-    console.log("❌ termosApp não carregou");
   }
-
 });
 
-/* =========================
-TIPO
-========================= */
+/* 🔥 ALTERAÇÃO AQUI (BOTÕES) */
 function selecionarTipo(tipo){
+
   tipoSelecionado = tipo;
+
+  const btnCliente = document.getElementById("btnCliente");
+  const btnMotorista = document.getElementById("btnMotorista");
+
+  btnCliente.classList.remove("btn-desativo");
+  btnMotorista.classList.remove("btn-desativo");
+
+  if(tipo === "cliente"){
+    btnMotorista.classList.add("btn-desativo");
+  }
+
+  if(tipo === "motorista"){
+    btnCliente.classList.add("btn-desativo");
+  }
+
   validar();
 }
 
-/* =========================
-CIDADE
-========================= */
+/* CIDADE */
 document.getElementById("cidadeSelect").addEventListener("change", function(){
 
   const cidade = this.value;
@@ -137,14 +143,10 @@ document.getElementById("cidadeSelect").addEventListener("change", function(){
   validar();
 });
 
-/* =========================
-ACEITE
-========================= */
+/* ACEITE */
 document.getElementById("aceite").addEventListener("change", validar);
 
-/* =========================
-VALIDAÇÃO
-========================= */
+/* VALIDAR */
 function validar(){
   const aceito = document.getElementById("aceite").checked;
   const btn = document.getElementById("continuar");
@@ -158,9 +160,7 @@ function validar(){
   }
 }
 
-/* =========================
-CONTINUAR
-========================= */
+/* CONTINUAR */
 document.getElementById("continuar").addEventListener("click", function(){
 
   if(tipoSelecionado === "cliente"){
