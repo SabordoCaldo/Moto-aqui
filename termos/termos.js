@@ -36,3 +36,5 @@ Ao utilizar o aplicativo Moto Aqui, você concorda com os seguintes termos:<br><
 13. Ao continuar, você declara que leu, compreendeu e concorda com todos os termos apresentados.
 `
 };
+
+window.termosApp = termosApp;
