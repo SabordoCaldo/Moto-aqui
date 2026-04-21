@@ -18,7 +18,7 @@
     <h1>CADASTRO MOTORISTA</h1>
 
     <!-- FOTO PERFIL -->
-    <div class="foto-perfil" onclick="escolherFotoPerfil()">
+    <div class="foto-perfil">
       <img id="fotoPreview" src="../assets/user-motorista.png">
       <div class="add">+</div>
       <input type="file" id="inputFotoPerfil" accept="image/*">
@@ -60,9 +60,9 @@
       </span>
     </div>
 
-    <!-- CNH -->
+    <!-- CNH (CORRIGIDO) -->
     <label>CNH</label>
-    <div class="cnh-box" onclick="escolherCNH()">
+    <div class="cnh-box">
       <img id="imgCNH" src="../assets/cnh-exemplo.png">
       <div class="add">+</div>
       <input type="file" id="inputCNH" accept="image/*,.pdf">
@@ -75,26 +75,33 @@
   </div>
 </div>
 
-<!-- 🔥 MODAL PREVIEW -->
-<div id="modalImg" onclick="fecharPreview()">
-  <img id="imgGrande">
-</div>
-
 <script src="../js/motorista.js"></script>
 
 <script>
 
-/* FOTO PERFIL */
-function escolherFotoPerfil(){
-  document.getElementById("inputFotoPerfil").click();
-}
+/* =========================
+FOTO PERFIL
+========================= */
+document.getElementById("inputFotoPerfil").addEventListener("change", function(e){
 
-/* CNH */
-function escolherCNH(){
-  document.getElementById("inputCNH").click();
-}
+  const file = e.target.files[0];
+  if(!file) return;
 
-document.getElementById("inputCNH").addEventListener("change", function(e){
+  const reader = new FileReader();
+
+  reader.onload = function(event){
+    document.getElementById("fotoPreview").src = event.target.result;
+  };
+
+  reader.readAsDataURL(file);
+});
+
+/* =========================
+CNH (FIX REAL)
+========================= */
+const inputCNH = document.getElementById("inputCNH");
+
+inputCNH.addEventListener("change", function(e){
 
   const file = e.target.files[0];
   if(!file) return;
@@ -102,43 +109,35 @@ document.getElementById("inputCNH").addEventListener("change", function(e){
   const img = document.getElementById("imgCNH");
   const pdf = document.getElementById("pdfCNH");
 
+  pdf.style.display = "none";
+  pdf.innerText = "";
+
   if(file.type.startsWith("image/")){
+
     const reader = new FileReader();
 
     reader.onload = function(event){
       img.src = event.target.result;
       img.style.display = "block";
-      pdf.style.display = "none";
     };
 
     reader.readAsDataURL(file);
 
-  }else{
+  } 
+  else if(file.type === "application/pdf"){
+
     img.style.display = "none";
+
     pdf.style.display = "block";
     pdf.innerText = "📄 " + file.name;
+
   }
 
 });
 
-/* PREVIEW AMPLIADO */
-document.getElementById("imgCNH").addEventListener("click", function(e){
-  e.stopPropagation();
-
-  const modal = document.getElementById("modalImg");
-  const grande = document.getElementById("imgGrande");
-
-  if(this.src){
-    grande.src = this.src;
-    modal.style.display = "flex";
-  }
-});
-
-function fecharPreview(){
-  document.getElementById("modalImg").style.display = "none";
-}
-
-/* OLHO */
+/* =========================
+OLHO SENHA
+========================= */
 function toggleSenha(id, el){
   const input = document.getElementById(id);
 
@@ -151,7 +150,9 @@ function toggleSenha(id, el){
   }
 }
 
-/* TELEFONE */
+/* =========================
+TELEFONE
+========================= */
 document.getElementById("telefone").addEventListener("input", function(e){
 
   let v = e.target.value.replace(/\D/g, "");
