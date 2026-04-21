@@ -1,4 +1,6 @@
-/* BASE GLOBAL */
+/* =========================
+BASE GLOBAL
+========================= */
 
 html, body{
   margin:0;
@@ -40,7 +42,7 @@ html, body{
 }
 
 /* =========================
-LOGIN (ESTILO ORIGINAL)
+LOGIN
 ========================= */
 
 body.login{
@@ -55,14 +57,22 @@ body.login .card{
 
 /* INPUT */
 body.login .input-box{
+  position:relative;
   background:#eee;
   border:1px solid #999;
   border-radius:15px;
   padding:10px 12px;
+  display:flex;
+  align-items:center;
 }
 
 body.login .input-box input{
+  width:100%;
+  border:none;
+  outline:none;
+  background:transparent;
   color:#000;
+  padding-right:35px;
 }
 
 /* TEXTO AMARELO */
@@ -116,7 +126,7 @@ body.login .opcoes{
 }
 
 /* =========================
-OLHO PROFISSIONAL
+OLHO SENHA
 ========================= */
 
 body.login .eye{
@@ -140,7 +150,7 @@ body.login .eye path{
   fill:none;
 }
 
-/* ATIVO (VERMELHO) */
+/* OLHO ATIVO */
 body.login .eye.off path{
   stroke:red;
 }
@@ -155,56 +165,3 @@ body.login .eye.off::after{
   top:50%;
   left:0;
 }
-
-/* =========================
-FORÇA LOGIN (CORREÇÃO FINAL)
-========================= */
-
-body.login .input-box{
-  background:#eee !important;
-  border:1px solid #999 !important;
-  border-radius:15px !important;
-  padding:10px 12px !important;
-}
-
-body.login .input-box input{
-  color:#000 !important;
-}
-
-body.login .card{
-  background:#fff !important;
-  border:1px solid #ddd !important;
-}
-
-body.login{
-  background:#f5f5f5 !important;
-}
-
-/* OLHO */
-body.login .eye{
-  position:absolute;
-  right:12px;
-  top:50%;
-  transform:translateY(-50%);
-  width:22px;
-  height:22px;
-}
-
-body.login .eye path{
-  stroke:#777 !important;
-}
-
-body.login .eye.off path{
-  stroke:red !important;
-}
-
-body.login .eye.off::after{
-  content:"";
-  position:absolute;
-  width:22px;
-  height:2px;
-  background:red;
-  transform:rotate(45deg);
-  top:50%;
-  left:0;
-  }
