@@ -20,30 +20,33 @@ BODY
 ========================= -->
 <body>
 
+<!-- =========================
+CONTAINER
+========================= -->
 <div class="container">
+
+  <!-- =========================
+  CARD
+  ========================= -->
   <div class="card">
 
     <!-- =========================
     TÍTULO
-    ========================= -->
+    ========================== -->
     <h1>CADASTRO MOTORISTA</h1>
 
     <!-- =========================
     FOTO PERFIL
-    ========================= -->
+    ========================== -->
     <div class="foto-perfil" onclick="escolherFotoPerfil()">
-
       <img id="fotoPreview" src="../assets/user-motorista.png">
-
       <div class="add">+</div>
-
       <input type="file" id="inputFotoPerfil" accept="image/*">
-
     </div>
 
     <!-- =========================
     NOME
-    ========================= -->
+    ========================== -->
     <label>Nome</label>
     <div class="input-box">
       <input type="text" id="nome" placeholder="Digite seu nome">
@@ -51,7 +54,7 @@ BODY
 
     <!-- =========================
     TELEFONE
-    ========================= -->
+    ========================== -->
     <label>Telefone</label>
     <div class="input-box">
       <input type="tel" id="telefone" placeholder="Digite seu telefone">
@@ -59,7 +62,7 @@ BODY
 
     <!-- =========================
     ENDEREÇO
-    ========================= -->
+    ========================== -->
     <label>Endereço</label>
     <div class="input-box">
       <input type="text" id="endereco" placeholder="Digite seu endereço">
@@ -67,37 +70,48 @@ BODY
 
     <!-- =========================
     CNH NÚMERO
-    ========================= -->
+    ========================== -->
     <label>Número da CNH</label>
     <div class="input-box">
       <input type="text" id="cnh" maxlength="11" inputmode="numeric" placeholder="Digite o número da CNH">
     </div>
 
     <!-- =========================
-    CNH BOX
-    ========================= -->
+    CNH ARQUIVO
+    ========================== -->
     <label>CNH (toque para enviar)</label>
-
     <div class="cnh-box" onclick="escolherCNH()">
-
       <img id="imgCNH" src="../assets/cnh-exemplo.png">
-
       <div class="add">+</div>
-
       <input type="file" id="inputCNH" accept="image/*,.pdf">
-
     </div>
 
     <p id="pdfCNH" style="font-size:12px; display:none; text-align:center;"></p>
 
     <!-- =========================
+    SENHA
+    ========================== -->
+    <label>Senha</label>
+    <div class="input-box">
+      <input type="password" id="senha" placeholder="Senha (mín. 4 dígitos)">
+    </div>
+
+    <!-- =========================
+    CONFIRMAR SENHA
+    ========================== -->
+    <label>Confirmar Senha</label>
+    <div class="input-box">
+      <input type="password" id="confirmar" placeholder="Confirmar senha">
+    </div>
+
+    <!-- =========================
     BOTÃO
-    ========================= -->
+    ========================== -->
     <button class="btn" onclick="enviarMotorista()">Enviar para aprovação</button>
 
     <!-- =========================
     VOLTAR
-    ========================= -->
+    ========================== -->
     <p style="text-align:center;">
       <a href="escolha.html">Voltar</a>
     </p>
@@ -112,28 +126,27 @@ SCRIPTS
 
 <script>
 
-// FOTO PERFIL
+<!-- =========================
+FOTO PERFIL
+========================= -->
 function escolherFotoPerfil(){
   document.getElementById("inputFotoPerfil").click();
 }
 
 document.getElementById("inputFotoPerfil").addEventListener("change", function(e){
-
   const file = e.target.files[0];
-
   if(file){
     const reader = new FileReader();
-
     reader.onload = function(event){
       document.getElementById("fotoPreview").src = event.target.result;
     };
-
     reader.readAsDataURL(file);
   }
-
 });
 
-// CNH
+<!-- =========================
+CNH
+========================= -->
 function escolherCNH(){
   document.getElementById("inputCNH").click();
 }
@@ -141,44 +154,33 @@ function escolherCNH(){
 document.getElementById("inputCNH").addEventListener("change", function(e){
 
   const file = e.target.files[0];
-
   if(!file) return;
 
   const img = document.getElementById("imgCNH");
   const pdf = document.getElementById("pdfCNH");
 
-  // IMAGEM
   if(file.type.startsWith("image/")){
-
     const reader = new FileReader();
-
     reader.onload = function(event){
       img.src = event.target.result;
-      img.style.display = "block";
       pdf.style.display = "none";
     };
-
     reader.readAsDataURL(file);
-
   } 
-  // PDF (🔥 AJUSTE CIRÚRGICO)
   else if(file.type === "application/pdf"){
-
-    img.style.display = "block";
     img.src = "../assets/cnh-exemplo.png";
-
     pdf.style.display = "block";
     pdf.innerText = "📄 " + file.name;
-
   }
 
 });
 
-// TELEFONE
+<!-- =========================
+TELEFONE
+========================= -->
 document.getElementById("telefone").addEventListener("input", function(e){
 
   let v = e.target.value.replace(/\D/g, "");
-
   if(v.length > 11) v = v.slice(0,11);
 
   if(v.length > 6){
