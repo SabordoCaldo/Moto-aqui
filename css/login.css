@@ -1,0 +1,53 @@
+body{
+  background:#000;
+  color:#fff;
+}
+
+.card{
+  background:#000;
+  border:1px solid #333;
+}
+
+/* INPUT ESCURO */
+.input-box{
+  background:#111;
+  border:1px solid #333;
+  border-radius:12px;
+  padding:14px;
+  margin-bottom:15px;
+  display:flex;
+  align-items:center;
+}
+
+.input-box input{
+  width:100%;
+  background:none;
+  border:none;
+  outline:none;
+  color:#fff;
+}
+
+/* OLHO */
+.eye{
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+}
+
+.eye path{
+  stroke:#fff;
+}
+
+/* LOGO */
+.logo-box{
+  width:300px;
+  height:300px;
+  margin:0 auto 10px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.logo-box img{
+  width:80%;
+}
