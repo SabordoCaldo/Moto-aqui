@@ -13,6 +13,13 @@ HEAD
 
 <link rel="stylesheet" href="../css/style.css">
 
+<style>
+/* 🔥 AJUSTE CIRÚRGICO CLICK CNH */
+.cnh-box input{
+  display:none;
+}
+</style>
+
 </head>
 
 <!-- =========================
@@ -20,14 +27,7 @@ BODY
 ========================= -->
 <body>
 
-<!-- =========================
-CONTAINER
-========================= -->
 <div class="container">
-
-  <!-- =========================
-  CARD
-  ========================= -->
   <div class="card">
 
     <!-- =========================
@@ -77,18 +77,6 @@ CONTAINER
     </div>
 
     <!-- =========================
-    CNH ARQUIVO
-    ========================== -->
-    <label>CNH (toque para enviar)</label>
-    <div class="cnh-box" onclick="escolherCNH()">
-      <img id="imgCNH" src="../assets/cnh-exemplo.png">
-      <div class="add">+</div>
-      <input type="file" id="inputCNH" accept="image/*,.pdf">
-    </div>
-
-    <p id="pdfCNH" style="font-size:12px; display:none; text-align:center;"></p>
-
-    <!-- =========================
     SENHA
     ========================== -->
     <label>Senha</label>
@@ -103,6 +91,19 @@ CONTAINER
     <div class="input-box">
       <input type="password" id="confirmar" placeholder="Confirmar senha">
     </div>
+
+    <!-- =========================
+    CNH (AGORA AQUI EMBAIXO)
+    ========================== -->
+    <label>CNH (toque para enviar)</label>
+
+    <div class="cnh-box" onclick="escolherCNH()">
+      <img id="imgCNH" src="../assets/cnh-exemplo.png">
+      <div class="add">+</div>
+      <input type="file" id="inputCNH" accept="image/*,.pdf">
+    </div>
+
+    <p id="pdfCNH" style="font-size:12px; display:none; text-align:center;"></p>
 
     <!-- =========================
     BOTÃO
@@ -126,9 +127,9 @@ SCRIPTS
 
 <script>
 
-<!-- =========================
+/*===========================
 FOTO PERFIL
-========================= -->
+===========================*/
 function escolherFotoPerfil(){
   document.getElementById("inputFotoPerfil").click();
 }
@@ -144,9 +145,9 @@ document.getElementById("inputFotoPerfil").addEventListener("change", function(e
   }
 });
 
-<!-- =========================
+/*===========================
 CNH
-========================= -->
+===========================*/
 function escolherCNH(){
   document.getElementById("inputCNH").click();
 }
@@ -175,9 +176,9 @@ document.getElementById("inputCNH").addEventListener("change", function(e){
 
 });
 
-<!-- =========================
+/*===========================
 TELEFONE
-========================= -->
+===========================*/
 document.getElementById("telefone").addEventListener("input", function(e){
 
   let v = e.target.value.replace(/\D/g, "");
