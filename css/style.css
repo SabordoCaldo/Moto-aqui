@@ -73,14 +73,7 @@ h1{
 }
 
 /*===========================
-FORM
-===========================*/
-.form{
-  width:100%;
-}
-
-/*===========================
-INPUT (FINAL LIMPO)
+INPUT
 ===========================*/
 .input-box{
   position:relative;
@@ -99,7 +92,7 @@ INPUT (FINAL LIMPO)
   border:none;
   outline:none;
   color:#000;
-  padding-right:35px; /* espaço pro olho */
+  padding-right:35px;
 }
 
 /*===========================
@@ -113,6 +106,11 @@ OLHO SENHA
   width:20px;
   height:20px;
   cursor:pointer;
+}
+
+.eye svg{
+  width:100%;
+  height:100%;
 }
 
 .eye path{
@@ -137,21 +135,6 @@ OLHO SENHA
 }
 
 /*===========================
-OPÇÕES
-===========================*/
-.opcoes{
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  font-size:14px;
-  margin-bottom:15px;
-}
-
-.opcoes a{
-  color:#FFD600;
-}
-
-/*===========================
 BOTÃO
 ===========================*/
 .btn{
@@ -163,50 +146,6 @@ BOTÃO
   color:#000;
   font-size:17px;
   font-weight:bold;
-}
-
-/*===========================
-CADASTRO
-===========================*/
-.cadastro{
-  text-align:center;
-  margin-top:15px;
-}
-
-.cadastro b{
-  color:#FFD600;
-}
-
-/*===========================
-OU
-===========================*/
-.ou{
-  display:flex;
-  align-items:center;
-  margin:20px 0;
-}
-
-.ou span{
-  flex:1;
-  height:1px;
-  background:#333;
-}
-
-.ou p{
-  margin:0 10px;
-  color:#aaa;
-}
-
-/*===========================
-GMAIL
-===========================*/
-.gmail{
-  width:100%;
-  padding:15px;
-  border-radius:12px;
-  background:#111;
-  color:#fff;
-  border:1px solid #333;
 }
 
 /*===========================
@@ -230,10 +169,6 @@ FOTO PERFIL
   border-radius:50%;
 }
 
-.foto-perfil input{
-  display:none;
-}
-
 .foto-perfil .add{
   position:absolute;
   bottom:0;
@@ -247,11 +182,10 @@ FOTO PERFIL
   align-items:center;
   justify-content:center;
   font-weight:bold;
-  font-size:20px;
 }
 
 /*===========================
-CNH BOX
+CNH / CRLV BOX
 ===========================*/
 .cnh-box{
   position:relative;
@@ -285,58 +219,9 @@ CNH BOX
 }
 
 /*===========================
-PDF CNH
+INPUT FILE (CLIQUE REAL)
 ===========================*/
-#pdfCNH{
-  text-align:center;
-  font-size:13px;
-  margin-top:8px;
-  color:#555;
-}
-
-/*===========================
-MODAL PREVIEW
-===========================*/
-#modalImg{
-  display:none;
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  background:rgba(0,0,0,0.9);
-  justify-content:center;
-  align-items:center;
-  z-index:9999;
-}
-
-#modalImg img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:12px;
-}
-
-/*===========================
-ZOOM BOTÕES
-===========================*/
-.zoom-controls{
-  display:flex;
-  justify-content:center;
-  gap:10px;
-  margin-bottom:15px;
-}
-
-.zoom-controls button{
-  width:45px;
-  height:45px;
-  border:none;
-  border-radius:10px;
-  background:#FFD600;
-  font-size:20px;
-  font-weight:bold;
-}
-
-/* 🔥 CLIQUE CORRETO CNH */
+.foto-perfil input,
 .cnh-box input{
   position:absolute;
   width:100%;
@@ -345,4 +230,14 @@ ZOOM BOTÕES
   left:0;
   opacity:0;
   cursor:pointer;
+}
+
+/*===========================
+PDF
+===========================*/
+#pdfCNH, #pdfCRLV{
+  text-align:center;
+  font-size:13px;
+  margin-top:8px;
+  color:#555;
 }
