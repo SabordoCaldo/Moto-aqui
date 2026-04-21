@@ -4,6 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Cadastro Motorista</title>
 
 <link rel="stylesheet" href="../css/style.css">
@@ -24,18 +25,29 @@
       <input type="file" id="inputFotoPerfil" accept="image/*">
     </div>
 
-    <!-- CAMPOS -->
+    <!-- NOME -->
     <label>Nome</label>
-    <div class="input-box"><input type="text" id="nome"></div>
+    <div class="input-box">
+      <input type="text" id="nome" placeholder="Digite seu nome">
+    </div>
 
+    <!-- TELEFONE -->
     <label>Telefone</label>
-    <div class="input-box"><input type="tel" id="telefone"></div>
+    <div class="input-box">
+      <input type="tel" id="telefone" placeholder="Digite seu telefone">
+    </div>
 
+    <!-- ENDEREÇO -->
     <label>Endereço</label>
-    <div class="input-box"><input type="text" id="endereco"></div>
+    <div class="input-box">
+      <input type="text" id="endereco" placeholder="Digite seu endereço">
+    </div>
 
+    <!-- CNH -->
     <label>Número da CNH</label>
-    <div class="input-box"><input type="text" id="cnh" maxlength="11"></div>
+    <div class="input-box">
+      <input type="text" id="cnh" maxlength="11" placeholder="Digite a CNH">
+    </div>
 
     <!-- SENHA -->
     <label>Senha</label>
@@ -49,6 +61,7 @@
       </span>
     </div>
 
+    <!-- CONFIRMAR -->
     <label>Confirmar Senha</label>
     <div class="input-box">
       <input type="password" id="confirmar">
@@ -60,49 +73,70 @@
       </span>
     </div>
 
-    <!-- CNH (CORRIGIDO) -->
+    <!-- =========================
+    DADOS DA MOTO
+    ========================= -->
+
+    <label>Placa</label>
+    <div class="input-box">
+      <input type="text" id="placa" maxlength="7" placeholder="ABC1234 ou ABC1D23">
+    </div>
+
+    <label>Ano de fabricação</label>
+    <div class="input-box">
+      <input type="number" id="ano" placeholder="Ex: 2020">
+    </div>
+
+    <label>Cor</label>
+    <div class="input-box">
+      <input type="text" id="cor" placeholder="Ex: preta">
+    </div>
+
+    <label>Modelo</label>
+    <div class="input-box">
+      <input type="text" id="modelo" placeholder="Ex: Factor 150">
+    </div>
+
+    <!-- CNH FOTO -->
     <label>CNH</label>
     <div class="cnh-box">
       <img id="imgCNH" src="../assets/cnh-exemplo.png">
       <div class="add">+</div>
       <input type="file" id="inputCNH" accept="image/*,.pdf">
     </div>
-
     <p id="pdfCNH"></p>
 
+    <!-- CRLV -->
+    <label>CRLV</label>
+    <div class="cnh-box">
+      <img id="imgCRLV" src="../assets/cnh-exemplo.png">
+      <div class="add">+</div>
+      <input type="file" id="inputCRLV" accept="image/*,.pdf">
+    </div>
+    <p id="pdfCRLV"></p>
+
+    <!-- BOTÃO -->
     <button class="btn" onclick="enviarMotorista()">Enviar para aprovação</button>
 
   </div>
 </div>
 
-<script src="../js/motorista.js"></script>
-
 <script>
 
-/* =========================
-FOTO PERFIL
-========================= */
+/* FOTO PERFIL */
 document.getElementById("inputFotoPerfil").addEventListener("change", function(e){
-
   const file = e.target.files[0];
   if(!file) return;
 
   const reader = new FileReader();
-
   reader.onload = function(event){
     document.getElementById("fotoPreview").src = event.target.result;
   };
-
   reader.readAsDataURL(file);
 });
 
-/* =========================
-CNH (FIX REAL)
-========================= */
-const inputCNH = document.getElementById("inputCNH");
-
-inputCNH.addEventListener("change", function(e){
-
+/* CNH */
+document.getElementById("inputCNH").addEventListener("change", function(e){
   const file = e.target.files[0];
   if(!file) return;
 
@@ -110,34 +144,40 @@ inputCNH.addEventListener("change", function(e){
   const pdf = document.getElementById("pdfCNH");
 
   pdf.style.display = "none";
-  pdf.innerText = "";
 
   if(file.type.startsWith("image/")){
-
     const reader = new FileReader();
-
-    reader.onload = function(event){
-      img.src = event.target.result;
-      img.style.display = "block";
-    };
-
+    reader.onload = e => img.src = e.target.result;
     reader.readAsDataURL(file);
-
-  } 
-  else if(file.type === "application/pdf"){
-
+  } else {
     img.style.display = "none";
-
     pdf.style.display = "block";
     pdf.innerText = "📄 " + file.name;
-
   }
-
 });
 
-/* =========================
-OLHO SENHA
-========================= */
+/* CRLV */
+document.getElementById("inputCRLV").addEventListener("change", function(e){
+  const file = e.target.files[0];
+  if(!file) return;
+
+  const img = document.getElementById("imgCRLV");
+  const pdf = document.getElementById("pdfCRLV");
+
+  pdf.style.display = "none";
+
+  if(file.type.startsWith("image/")){
+    const reader = new FileReader();
+    reader.onload = e => img.src = e.target.result;
+    reader.readAsDataURL(file);
+  } else {
+    img.style.display = "none";
+    pdf.style.display = "block";
+    pdf.innerText = "📄 " + file.name;
+  }
+});
+
+/* OLHO */
 function toggleSenha(id, el){
   const input = document.getElementById(id);
 
@@ -150,13 +190,9 @@ function toggleSenha(id, el){
   }
 }
 
-/* =========================
-TELEFONE
-========================= */
+/* TELEFONE */
 document.getElementById("telefone").addEventListener("input", function(e){
-
   let v = e.target.value.replace(/\D/g, "");
-
   if(v.length > 11) v = v.slice(0,11);
 
   if(v.length > 6){
@@ -168,7 +204,6 @@ document.getElementById("telefone").addEventListener("input", function(e){
   }
 
   e.target.value = v;
-
 });
 
 </script>
