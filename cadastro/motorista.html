@@ -74,7 +74,7 @@ BODY
     </div>
 
     <!-- =========================
-    CNH BOX (CORRIGIDO)
+    CNH BOX
     ========================= -->
     <label>CNH (toque para enviar)</label>
 
@@ -147,6 +147,7 @@ document.getElementById("inputCNH").addEventListener("change", function(e){
   const img = document.getElementById("imgCNH");
   const pdf = document.getElementById("pdfCNH");
 
+  // IMAGEM
   if(file.type.startsWith("image/")){
 
     const reader = new FileReader();
@@ -159,9 +160,13 @@ document.getElementById("inputCNH").addEventListener("change", function(e){
 
     reader.readAsDataURL(file);
 
-  } else if(file.type === "application/pdf"){
+  } 
+  // PDF (🔥 AJUSTE CIRÚRGICO)
+  else if(file.type === "application/pdf"){
 
-    img.style.display = "none";
+    img.style.display = "block";
+    img.src = "../assets/cnh-exemplo.png";
+
     pdf.style.display = "block";
     pdf.innerText = "📄 " + file.name;
 
