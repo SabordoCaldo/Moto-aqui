@@ -5,7 +5,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cadastro Cliente</title>
+
 <link rel="stylesheet" href="../css/style.css">
+
 </head>
 
 <body>
@@ -25,33 +27,43 @@
     <!-- NOME -->
     <label>Nome</label>
     <div class="input-box">
-      <input type="text" id="nome" placeholder="Digite seu nome">
+      <input type="text" id="nome">
     </div>
 
     <!-- TELEFONE -->
     <label>Telefone</label>
     <div class="input-box">
-      <input type="tel" id="telefone" placeholder="Digite seu telefone">
+      <input type="tel" id="telefone">
     </div>
 
     <!-- ENDEREÇO -->
     <label>Endereço</label>
     <div class="input-box">
-      <input type="text" id="endereco" placeholder="Digite seu endereço">
+      <input type="text" id="endereco">
     </div>
 
     <!-- SENHA -->
     <label>Senha</label>
     <div class="input-box">
-      <input type="password" id="senha" placeholder="Senha (mín. 4 dígitos)">
-      <span class="eye" onclick="toggleSenha('senha', this)">👁️</span>
+      <input type="password" id="senha">
+      <span class="eye" onclick="toggleSenha('senha', this)">
+        <svg viewBox="0 0 24 24">
+          <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6z"/>
+          <path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+        </svg>
+      </span>
     </div>
 
     <!-- CONFIRMAR -->
     <label>Confirmar Senha</label>
     <div class="input-box">
-      <input type="password" id="confirmar" placeholder="Confirmar senha">
-      <span class="eye" onclick="toggleSenha('confirmar', this)">👁️</span>
+      <input type="password" id="confirmar">
+      <span class="eye" onclick="toggleSenha('confirmar', this)">
+        <svg viewBox="0 0 24 24">
+          <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6z"/>
+          <path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+        </svg>
+      </span>
     </div>
 
     <button class="btn" onclick="cadastrar()">Cadastrar</button>
@@ -83,15 +95,16 @@ document.getElementById("inputFoto").addEventListener("change", function(e){
   }
 });
 
-// OLHO SENHA
+// OLHO
 function toggleSenha(id, el){
   const input = document.getElementById(id);
+
   if(input.type === "password"){
     input.type = "text";
-    el.innerText = "🙈";
+    el.classList.add("off");
   }else{
     input.type = "password";
-    el.innerText = "👁️";
+    el.classList.remove("off");
   }
 }
 
