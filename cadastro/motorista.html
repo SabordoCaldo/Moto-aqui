@@ -17,7 +17,7 @@
 
     <h1>CADASTRO MOTORISTA</h1>
 
-    <!-- FOTO -->
+    <!-- FOTO PERFIL -->
     <div class="foto-perfil" onclick="escolherFotoPerfil()">
       <img id="fotoPreview" src="../assets/user-motorista.png">
       <div class="add">+</div>
@@ -75,16 +75,21 @@
   </div>
 </div>
 
+<!-- 🔥 MODAL PREVIEW -->
+<div id="modalImg" onclick="fecharPreview()">
+  <img id="imgGrande">
+</div>
+
 <script src="../js/motorista.js"></script>
 
 <script>
 
-// FOTO
+/* FOTO PERFIL */
 function escolherFotoPerfil(){
   document.getElementById("inputFotoPerfil").click();
 }
 
-// CNH
+/* CNH */
 function escolherCNH(){
   document.getElementById("inputCNH").click();
 }
@@ -97,28 +102,43 @@ document.getElementById("inputCNH").addEventListener("change", function(e){
   const img = document.getElementById("imgCNH");
   const pdf = document.getElementById("pdfCNH");
 
-  img.src = ""; // limpa
-
   if(file.type.startsWith("image/")){
     const reader = new FileReader();
 
     reader.onload = function(event){
       img.src = event.target.result;
+      img.style.display = "block";
+      pdf.style.display = "none";
     };
 
     reader.readAsDataURL(file);
 
-    pdf.style.display = "none";
-
   }else{
-    img.src = "../assets/cnh-exemplo.png";
-    pdf.innerText = "📄 " + file.name;
+    img.style.display = "none";
     pdf.style.display = "block";
+    pdf.innerText = "📄 " + file.name;
   }
 
 });
 
-// OLHO
+/* PREVIEW AMPLIADO */
+document.getElementById("imgCNH").addEventListener("click", function(e){
+  e.stopPropagation();
+
+  const modal = document.getElementById("modalImg");
+  const grande = document.getElementById("imgGrande");
+
+  if(this.src){
+    grande.src = this.src;
+    modal.style.display = "flex";
+  }
+});
+
+function fecharPreview(){
+  document.getElementById("modalImg").style.display = "none";
+}
+
+/* OLHO */
 function toggleSenha(id, el){
   const input = document.getElementById(id);
 
@@ -130,6 +150,25 @@ function toggleSenha(id, el){
     el.classList.remove("off");
   }
 }
+
+/* TELEFONE */
+document.getElementById("telefone").addEventListener("input", function(e){
+
+  let v = e.target.value.replace(/\D/g, "");
+
+  if(v.length > 11) v = v.slice(0,11);
+
+  if(v.length > 6){
+    v = v.replace(/^(\d{2})(\d{5})(\d{0,4})$/, "($1) $2-$3");
+  }else if(v.length > 2){
+    v = v.replace(/^(\d{2})(\d{0,5})$/, "($1) $2");
+  }else{
+    v = v.replace(/^(\d*)$/, "($1");
+  }
+
+  e.target.value = v;
+
+});
 
 </script>
 
