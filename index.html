@@ -1,74 +1,60 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Moto Aqui</title>
 
 <link rel="stylesheet" href="css/style.css">
-
 </head>
 
 <body class="login">
 
 <div class="container">
-  <div class="card">
+<div class="card">
 
-    <!-- LOGO -->
-    <div class="logo-box">
-      <img src="assets/logo.png">
-    </div>
+<div style="text-align:center">
+  <img src="assets/logo.png" style="width:200px;">
+  <p class="sub">App de mobilidade urbana</p>
+</div>
 
-    <p class="sub">App de mobilidade urbana</p>
+<h1>BEM-VINDO</h1>
 
-    <h1>BEM-VINDO</h1>
+<label>Email ou celular</label>
+<div class="input-box">
+  <input type="text" placeholder="Digite seu email ou celular">
+</div>
 
-    <!-- EMAIL -->
-    <label>Email ou celular</label>
-    <div class="input-box">
-      <input type="text" placeholder="Digite seu email ou celular">
-    </div>
+<label>Senha</label>
+<div class="input-box">
+  <input type="password" id="senha" placeholder="Senha">
 
-    <!-- SENHA -->
-    <label>Senha</label>
-    <div class="input-box">
-      <input type="password" id="senha" placeholder="Senha">
+  <span class="eye" onclick="toggleSenha('senha', this)">
+    <svg viewBox="0 0 24 24">
+      <path d="M1 12C3.5 7 7.5 4 12 4s8.5 3 11 8c-2.5 5-6.5 8-11 8s-8.5-3-11-8z"/>
+      <circle cx="12" cy="12" r="3"/>
+    </svg>
+  </span>
+</div>
 
-      <span class="eye" onclick="toggleSenha('senha', this)">
-        <svg viewBox="0 0 24 24">
-          <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6z"/>
-          <path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
-        </svg>
-      </span>
-    </div>
+<div class="opcoes">
+  <label><input type="checkbox"> Salvar senha</label>
+  <a href="#">Esqueci a senha</a>
+</div>
 
-    <!-- OPÇÕES -->
-    <div class="opcoes">
-      <label><input type="checkbox"> Salvar senha</label>
-      <a href="#">Esqueci a senha</a>
-    </div>
+<button class="btn">Entrar</button>
 
-    <!-- BOTÃO -->
-    <button class="btn">Entrar</button>
+<p style="text-align:center;margin-top:15px;">
+Não tem conta? <a href="cadastro/escolha.html"><b>Cadastre-se</b></a>
+</p>
 
-    <!-- CADASTRO -->
-    <div class="cadastro">
-      Não tem conta? <b onclick="irCadastro()">Cadastre-se</b>
-    </div>
+<div class="ou">
+<span></span><p>OU</p><span></span>
+</div>
 
-    <!-- OU -->
-    <div class="ou">
-      <span></span>
-      <p>OU</p>
-      <span></span>
-    </div>
+<button class="gmail">Entrar com conta Gmail</button>
 
-    <!-- GMAIL -->
-    <button class="gmail">Entrar com conta Gmail</button>
-
-  </div>
+</div>
 </div>
 
 <script>
@@ -82,10 +68,6 @@ function toggleSenha(id, el){
     input.type = "password";
     el.classList.remove("off");
   }
-}
-
-function irCadastro(){
-  window.location.href = "cadastro/escolha.html";
 }
 </script>
 
