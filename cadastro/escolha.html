@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-<head>
 
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<link rel="stylesheet" href="../css/style.css">
-
 <title>Escolha</title>
+
+<link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/escolha.css">
 
 </head>
 
@@ -16,136 +17,22 @@
 <div class="container">
   <div class="card">
 
-    <!-- LOGO -->
-    <div style="text-align:center;">
-      <img src="../assets/logo.png" style="width:180px;">
-    </div>
+    <h1>Escolha seu cadastro</h1>
 
-    <!-- TEXTO -->
-    <p style="text-align:center;color:#f1c40f;">App de mobilidade urbana</p>
-    <h1 style="text-align:center;">Escolha eu sou</h1>
-
-    <!-- BOTÕES -->
-    <button class="btn" onclick="selecionarTipo('cliente')" id="btnCliente" style="margin-bottom:10px;">
-      Cliente
-    </button>
-
-    <button class="btn" onclick="selecionarTipo('motorista')" id="btnMotorista" style="margin-bottom:20px;">
-      Motorista
-    </button>
-
-    <!-- CIDADE -->
-    <label>Cidade</label>
-
-    <select id="cidade" class="input-box" style="background:white;color:black;">
-
-      <option value="">Selecione sua cidade</option>
-
-      <option value="Passos">Passos</option>
-      <option value="Alpinópolis">Alpinópolis</option>
-      <option value="Bom Jesus da Penha">Bom Jesus da Penha</option>
-      <option value="Itaú de Minas">Itaú de Minas</option>
-      <option value="São João Batista do Glória">São João Batista do Glória</option>
-
-    </select>
-
-    <!-- TERMOS -->
-    <h3>Termos e Privacidade</h3>
-
-    <div id="boxTermos" style="
-      height:150px;
-      overflow-y:scroll;
-      background:#f5f5f5;
-      padding:10px;
-      border-radius:10px;
-      font-size:13px;
-      margin-bottom:10px;
-    "></div>
-
-    <label id="labelTermos" style="opacity:0.5;">
-      <input type="checkbox" id="termos" disabled>
-      Estou ciente e aceito os termos
-    </label>
-
-    <!-- BOTÃO -->
-    <button class="btn" id="btnContinuar" onclick="continuar()" disabled>
-      Continuar
-    </button>
-
-    <p style="text-align:center;">
-      <a href="../index.html">Voltar</a>
-    </p>
+    <button class="opcao" onclick="irCliente()">Sou Cliente</button>
+    <button class="opcao" onclick="irMotorista()">Sou Motorista</button>
 
   </div>
 </div>
 
-<script src="../termos/termos.js"></script>
-<script src="../js/escolha.js"></script>
-
 <script>
-
-window.tipoSelecionado = null;
-
-const box = document.getElementById("boxTermos");
-const checkbox = document.getElementById("termos");
-const label = document.getElementById("labelTermos");
-const botao = document.getElementById("btnContinuar");
-
-const cidadesValidas = [
-  "Passos",
-  "Alpinópolis",
-  "Bom Jesus da Penha",
-  "Itaú de Minas",
-  "São João Batista do Glória"
-];
-
-// CARREGA TERMOS
-box.innerHTML = termosApp.texto;
-
-// LIBERA CHECKBOX
-box.addEventListener("scroll", function(){
-
-  const chegouFinal = box.scrollTop + box.clientHeight >= box.scrollHeight - 2;
-
-  if(chegouFinal){
-    checkbox.disabled = false;
-    label.style.opacity = "1";
-  }
-
-});
-
-// 🔥 CORREÇÃO AQUI (REMOVIDO DUPLICADO)
-function selecionarTipo(tipo){
-  window.tipoSelecionado = tipo;
-
-  document.getElementById("btnCliente").style.opacity = tipo === "cliente" ? "1" : "0.5";
-  document.getElementById("btnMotorista").style.opacity = tipo === "motorista" ? "1" : "0.5";
-
-  verificar();
+function irCliente(){
+  window.location.href = "cliente.html";
 }
 
-// 🔥 CORREÇÃO AQUI (USANDO WINDOW)
-function verificar(){
-
-  const cidade = document.getElementById("cidade").value;
-  const termos = checkbox.checked;
-
-  const cidadeValida = cidadesValidas.includes(cidade);
-
-  if(window.tipoSelecionado && cidadeValida && termos){
-    botao.disabled = false;
-    botao.style.opacity = "1";
-  }else{
-    botao.disabled = true;
-    botao.style.opacity = "0.5";
-  }
-
+function irMotorista(){
+  window.location.href = "motorista.html";
 }
-
-// EVENTOS
-document.getElementById("cidade").addEventListener("change", verificar);
-checkbox.addEventListener("change", verificar);
-
 </script>
 
 </body>
