@@ -6,34 +6,19 @@ function cadastrar(){
   const senha = document.getElementById("senha").value;
   const confirmar = document.getElementById("confirmar").value;
 
-  if(!nome){
-    alert("Digite seu nome");
-    return;
-  }
-
-  if(!telefone){
-    alert("Digite seu telefone");
-    return;
-  }
-
-  if(!endereco){
-    alert("Digite seu endereço");
-    return;
-  }
+  if(!nome) return alert("Digite seu nome");
+  if(!telefone) return alert("Digite seu telefone");
+  if(!endereco) return alert("Digite seu endereço");
 
   if(senha.length < 4){
-    alert("A senha deve ter no mínimo 4 dígitos");
-    return;
+    return alert("A senha deve ter no mínimo 4 dígitos");
   }
 
   if(senha !== confirmar){
-    alert("As senhas não coincidem");
-    return;
+    return alert("As senhas não coincidem");
   }
 
-  localStorage.setItem("cliente_nome", nome);
-  localStorage.setItem("cliente_telefone", telefone);
-  localStorage.setItem("cliente_endereco", endereco);
+  alert("Cadastro concluído com sucesso! Aproveite nosso aplicativo de mobilidade urbana 🚀");
 
   window.location.href = "cliente-home.html";
 }
