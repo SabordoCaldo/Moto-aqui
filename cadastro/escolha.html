@@ -53,9 +53,18 @@ style="width:100%; padding:12px; border-radius:10px; margin-bottom:15px;">
 <!-- TERMOS -->
 <label>Termos e Privacidade</label>
 
-<textarea id="termosBox"
-style="width:100%; height:120px; border-radius:10px; padding:10px;"
-readonly></textarea>
+<div id="termosBox"
+style="
+width:100%;
+height:140px;
+overflow:auto;
+border-radius:10px;
+padding:10px;
+border:1px solid #ccc;
+background:#fff;
+margin-bottom:10px;
+">
+</div>
 
 <!-- ACEITE -->
 <label style="display:block; margin-top:20px; font-weight:bold;">
@@ -86,18 +95,28 @@ SCRIPTS
 let tipoSelecionado = "";
 let cidadeValida = false;
 
-/* TERMOS */
-if(window.termosTexto){
-  document.getElementById("termosBox").value = window.termosTexto;
-}
+/* =========================
+CARREGAR TERMOS (CORRIGIDO)
+========================= */
+window.onload = function(){
 
-/* TIPO */
+  if(window.termosApp){
+    document.getElementById("termosBox").innerHTML = window.termosApp.texto;
+  }
+
+};
+
+/* =========================
+TIPO
+========================= */
 function selecionarTipo(tipo){
   tipoSelecionado = tipo;
   validar();
 }
 
-/* CIDADE */
+/* =========================
+CIDADE
+========================= */
 document.getElementById("cidadeSelect").addEventListener("change", function(){
 
   const cidade = this.value;
@@ -112,10 +131,14 @@ document.getElementById("cidadeSelect").addEventListener("change", function(){
   validar();
 });
 
-/* ACEITE */
+/* =========================
+ACEITE
+========================= */
 document.getElementById("aceite").addEventListener("change", validar);
 
-/* VALIDAR */
+/* =========================
+VALIDAÇÃO
+========================= */
 function validar(){
   const aceito = document.getElementById("aceite").checked;
   const btn = document.getElementById("continuar");
@@ -129,7 +152,9 @@ function validar(){
   }
 }
 
-/* CONTINUAR */
+/* =========================
+CONTINUAR
+========================= */
 document.getElementById("continuar").addEventListener("click", function(){
 
   if(tipoSelecionado === "cliente"){
