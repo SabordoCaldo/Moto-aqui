@@ -9,50 +9,21 @@ function enviarMotorista(){
   const senha = document.getElementById("senha").value;
   const confirmar = document.getElementById("confirmar").value;
 
-  if(!nome){
-    alert("Digite seu nome");
-    return;
-  }
-
-  if(!telefone){
-    alert("Digite seu telefone");
-    return;
-  }
-
-  if(!endereco){
-    alert("Digite seu endereço");
-    return;
-  }
-
-  if(!cnh){
-    alert("Digite o número da CNH");
-    return;
-  }
-
-  if(cnh.length !== 11){
-    alert("CNH deve ter 11 números");
-    return;
-  }
-
-  if(!arquivo){
-    alert("Envie a CNH (foto ou PDF)");
-    return;
-  }
+  if(!nome) return alert("Digite seu nome");
+  if(!telefone) return alert("Digite seu telefone");
+  if(!endereco) return alert("Digite seu endereço");
+  if(!cnh) return alert("Digite a CNH");
+  if(!arquivo) return alert("Envie a CNH");
 
   if(senha.length < 4){
-    alert("A senha deve ter no mínimo 4 dígitos");
-    return;
+    return alert("Senha mínima 4 dígitos");
   }
 
   if(senha !== confirmar){
-    alert("As senhas não coincidem");
-    return;
+    return alert("Senhas não coincidem");
   }
 
-  localStorage.setItem("motorista_nome", nome);
-  localStorage.setItem("motorista_status", "pendente");
-
-  alert("Cadastro enviado para aprovação!");
+  alert("Obrigado pelo seu cadastro! Vamos avaliar seus dados e te enviaremos uma resposta 🚀");
 
   window.location.href = "../index.html";
 }
