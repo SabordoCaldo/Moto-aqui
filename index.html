@@ -75,19 +75,12 @@ CONTAINER
         <!-- =========================
         OLHO SENHA
         ========================= -->
-        <span onclick="toggleSenha('senha')" 
-        style="
-          position:absolute;
-          right:15px;
-          top:50%;
-          transform:translateY(-50%);
-          cursor:pointer;
-          font-size:18px;
-        ">
-          👁️
-        </span>
-
-      </div>
+        <span class="eye" onclick="toggleSenha('senha', this)">
+  <svg viewBox="0 0 24 24">
+    <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6z"/>
+    <path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
+  </svg>
+</span>
 
       <!-- =========================
       OPÇÕES
