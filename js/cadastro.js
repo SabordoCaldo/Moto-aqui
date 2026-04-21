@@ -1,3 +1,7 @@
+/*===========================
+CLIENTE
+===========================*/
+
 function cadastrar(){
 
   const nome = document.getElementById("nome").value.trim();
@@ -21,7 +25,6 @@ function cadastrar(){
     return;
   }
 
-  // 🔥 REGRA SENHA
   if(senha.length < 4){
     alert("A senha deve ter no mínimo 4 dígitos");
     return;
@@ -32,26 +35,28 @@ function cadastrar(){
     return;
   }
 
-  // SALVAR
   localStorage.setItem("cliente_nome", nome);
   localStorage.setItem("cliente_telefone", telefone);
   localStorage.setItem("cliente_endereco", endereco);
 
-  // IR PRA HOME
   window.location.href = "cliente-home.html";
 }
 
 
-// =========================
-// MOTORISTA
-// =========================
+/*===========================
+MOTORISTA
+===========================*/
+
 function enviarMotorista(){
 
   const nome = document.getElementById("nome").value.trim();
   const telefone = document.getElementById("telefone").value.trim();
   const endereco = document.getElementById("endereco").value.trim();
   const cnh = document.getElementById("cnh").value.trim();
-  const arquivo = document.getElementById("inputCNH").files[0]; // 🔥 CORRIGIDO
+  const arquivo = document.getElementById("inputCNH").files[0];
+
+  const senha = document.getElementById("senha").value;
+  const confirmar = document.getElementById("confirmar").value;
 
   if(!nome){
     alert("Digite seu nome");
@@ -79,11 +84,20 @@ function enviarMotorista(){
   }
 
   if(!arquivo){
-    alert("Envie a foto ou PDF da CNH");
+    alert("Envie a CNH (foto ou PDF)");
     return;
   }
 
-  // SALVAR
+  if(senha.length < 4){
+    alert("A senha deve ter no mínimo 4 dígitos");
+    return;
+  }
+
+  if(senha !== confirmar){
+    alert("As senhas não coincidem");
+    return;
+  }
+
   localStorage.setItem("motorista_nome", nome);
   localStorage.setItem("motorista_telefone", telefone);
   localStorage.setItem("motorista_endereco", endereco);
