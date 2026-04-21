@@ -21,7 +21,7 @@ function cadastrar(){
     return;
   }
 
-  // 🔥 REGRA NOVA
+  // 🔥 REGRA SENHA
   if(senha.length < 4){
     alert("A senha deve ter no mínimo 4 dígitos");
     return;
@@ -41,13 +41,17 @@ function cadastrar(){
   window.location.href = "cliente-home.html";
 }
 
+
+// =========================
+// MOTORISTA
+// =========================
 function enviarMotorista(){
 
   const nome = document.getElementById("nome").value.trim();
   const telefone = document.getElementById("telefone").value.trim();
   const endereco = document.getElementById("endereco").value.trim();
   const cnh = document.getElementById("cnh").value.trim();
-  const arquivo = document.getElementById("arquivoCNH").files[0];
+  const arquivo = document.getElementById("inputCNH").files[0]; // 🔥 CORRIGIDO
 
   if(!nome){
     alert("Digite seu nome");
@@ -69,13 +73,20 @@ function enviarMotorista(){
     return;
   }
 
-  if(!arquivo){
-    alert("Envie a CNH (foto ou PDF)");
+  if(cnh.length !== 11){
+    alert("CNH deve ter 11 números");
     return;
   }
 
-  // SIMULA ENVIO
+  if(!arquivo){
+    alert("Envie a foto ou PDF da CNH");
+    return;
+  }
+
+  // SALVAR
   localStorage.setItem("motorista_nome", nome);
+  localStorage.setItem("motorista_telefone", telefone);
+  localStorage.setItem("motorista_endereco", endereco);
   localStorage.setItem("motorista_status", "pendente");
 
   alert("Cadastro enviado para aprovação!");
