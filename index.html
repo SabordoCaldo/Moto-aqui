@@ -8,6 +8,7 @@
 <title>Moto Aqui</title>
 
 <link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/login.css">
 
 </head>
 
@@ -16,42 +17,29 @@
 <div class="container">
   <div class="card">
 
-    <!-- LOGO -->
     <div class="logo-box">
       <img src="assets/logo.png">
     </div>
 
     <h1>Entrar</h1>
 
-    <!-- TELEFONE -->
     <div class="input-box">
       <input type="tel" id="telefone" placeholder="Telefone">
     </div>
 
-    <!-- SENHA -->
     <div class="input-box">
       <input type="password" id="senha" placeholder="Senha">
 
-      <!-- 🔥 OLHO CORRIGIDO -->
       <span class="eye" onclick="toggleSenha('senha', this)">
         <svg viewBox="0 0 24 24">
           <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6z"/>
           <path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
         </svg>
       </span>
-
     </div>
 
-    <!-- OPÇÕES -->
-    <div class="opcoes">
-      <label><input type="checkbox"> Salvar senha</label>
-      <a href="#">Esqueci a senha</a>
-    </div>
+    <button class="btn" onclick="irCadastro()">Entrar</button>
 
-    <!-- BOTÃO -->
-    <button class="btn" onclick="login()">Entrar</button>
-
-    <!-- CADASTRO -->
     <div class="cadastro">
       Não tem conta? <b onclick="irCadastro()">Cadastrar</b>
     </div>
@@ -59,13 +47,7 @@
   </div>
 </div>
 
-<script src="js/auth.js"></script>
-
 <script>
-
-/* =========================
-OLHO SENHA
-========================= */
 function toggleSenha(id, el){
   const input = document.getElementById(id);
 
@@ -78,34 +60,9 @@ function toggleSenha(id, el){
   }
 }
 
-/* =========================
-TELEFONE (MÁSCARA)
-========================= */
-document.getElementById("telefone").addEventListener("input", function(e){
-
-  let v = e.target.value.replace(/\D/g, "");
-
-  if(v.length > 11) v = v.slice(0,11);
-
-  if(v.length > 6){
-    v = v.replace(/^(\d{2})(\d{5})(\d{0,4})$/, "($1) $2-$3");
-  }else if(v.length > 2){
-    v = v.replace(/^(\d{2})(\d{0,5})$/, "($1) $2");
-  }else{
-    v = v.replace(/^(\d*)$/, "($1");
-  }
-
-  e.target.value = v;
-
-});
-
-/* =========================
-NAVEGAÇÃO
-========================= */
 function irCadastro(){
   window.location.href = "cadastro/escolha.html";
 }
-
 </script>
 
 </body>
