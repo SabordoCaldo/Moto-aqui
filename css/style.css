@@ -165,3 +165,7 @@ body.login .eye.off::after{
   top:50%;
   left:0;
 }
+
+.btn-desativo{
+  opacity: 0.5;
+}
