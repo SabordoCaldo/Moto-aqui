@@ -8,6 +8,7 @@
 <title>Cadastro Motorista</title>
 
 <link rel="stylesheet" href="../css/style.css">
+<link rel="stylesheet" href="../css/cadastro.css">
 
 </head>
 
@@ -16,197 +17,54 @@
 <div class="container">
   <div class="card">
 
-    <h1>CADASTRO MOTORISTA</h1>
+    <h1>Cadastro Motorista</h1>
 
-    <!-- FOTO PERFIL -->
     <div class="foto-perfil">
       <img id="fotoPreview" src="../assets/user-motorista.png">
       <div class="add">+</div>
-      <input type="file" id="inputFotoPerfil" accept="image/*">
+      <input type="file" id="inputFotoPerfil">
     </div>
 
-    <!-- NOME -->
     <label>Nome</label>
-    <div class="input-box">
-      <input type="text" id="nome" placeholder="Digite seu nome">
-    </div>
+    <div class="input-box"><input type="text"></div>
 
-    <!-- TELEFONE -->
     <label>Telefone</label>
-    <div class="input-box">
-      <input type="tel" id="telefone" placeholder="Digite seu telefone">
-    </div>
+    <div class="input-box"><input type="tel"></div>
 
-    <!-- ENDEREÇO -->
-    <label>Endereço</label>
-    <div class="input-box">
-      <input type="text" id="endereco" placeholder="Digite seu endereço">
-    </div>
+    <label>CNH</label>
+    <div class="input-box"><input type="text"></div>
 
-    <!-- CNH -->
-    <label>Número da CNH</label>
-    <div class="input-box">
-      <input type="text" id="cnh" maxlength="11" placeholder="Digite a CNH">
-    </div>
-
-    <!-- SENHA -->
-    <label>Senha</label>
-    <div class="input-box">
-      <input type="password" id="senha">
-      <span class="eye" onclick="toggleSenha('senha', this)">
-        <svg viewBox="0 0 24 24">
-          <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6z"/>
-          <path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
-        </svg>
-      </span>
-    </div>
-
-    <!-- CONFIRMAR -->
-    <label>Confirmar Senha</label>
-    <div class="input-box">
-      <input type="password" id="confirmar">
-      <span class="eye" onclick="toggleSenha('confirmar', this)">
-        <svg viewBox="0 0 24 24">
-          <path d="M2 12s4-6 10-6 10 6 10 6-4 6-10 6-10-6-10-6z"/>
-          <path d="M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>
-        </svg>
-      </span>
-    </div>
-
-    <!-- =========================
-    DADOS DA MOTO
-    ========================= -->
-
+    <!-- MOTO -->
     <label>Placa</label>
-    <div class="input-box">
-      <input type="text" id="placa" maxlength="7" placeholder="ABC1234 ou ABC1D23">
-    </div>
+    <div class="input-box"><input type="text"></div>
 
-    <label>Ano de fabricação</label>
-    <div class="input-box">
-      <input type="number" id="ano" placeholder="Ex: 2020">
-    </div>
+    <label>Ano</label>
+    <div class="input-box"><input type="number"></div>
 
     <label>Cor</label>
-    <div class="input-box">
-      <input type="text" id="cor" placeholder="Ex: preta">
-    </div>
+    <div class="input-box"><input type="text"></div>
 
     <label>Modelo</label>
-    <div class="input-box">
-      <input type="text" id="modelo" placeholder="Ex: Factor 150">
-    </div>
+    <div class="input-box"><input type="text"></div>
 
-    <!-- CNH FOTO -->
-    <label>CNH</label>
+    <!-- CNH IMG -->
     <div class="cnh-box">
       <img id="imgCNH" src="../assets/cnh-exemplo.png">
       <div class="add">+</div>
-      <input type="file" id="inputCNH" accept="image/*,.pdf">
+      <input type="file">
     </div>
-    <p id="pdfCNH"></p>
 
     <!-- CRLV -->
-    <label>CRLV</label>
     <div class="cnh-box">
-      <img id="imgCRLV" src="../assets/cnh-exemplo.png">
+      <img src="../assets/cnh-exemplo.png">
       <div class="add">+</div>
-      <input type="file" id="inputCRLV" accept="image/*,.pdf">
+      <input type="file">
     </div>
-    <p id="pdfCRLV"></p>
 
-    <!-- BOTÃO -->
-    <button class="btn" onclick="enviarMotorista()">Enviar para aprovação</button>
+    <button class="btn">Enviar</button>
 
   </div>
 </div>
-
-<script>
-
-/* FOTO PERFIL */
-document.getElementById("inputFotoPerfil").addEventListener("change", function(e){
-  const file = e.target.files[0];
-  if(!file) return;
-
-  const reader = new FileReader();
-  reader.onload = function(event){
-    document.getElementById("fotoPreview").src = event.target.result;
-  };
-  reader.readAsDataURL(file);
-});
-
-/* CNH */
-document.getElementById("inputCNH").addEventListener("change", function(e){
-  const file = e.target.files[0];
-  if(!file) return;
-
-  const img = document.getElementById("imgCNH");
-  const pdf = document.getElementById("pdfCNH");
-
-  pdf.style.display = "none";
-
-  if(file.type.startsWith("image/")){
-    const reader = new FileReader();
-    reader.onload = e => img.src = e.target.result;
-    reader.readAsDataURL(file);
-  } else {
-    img.style.display = "none";
-    pdf.style.display = "block";
-    pdf.innerText = "📄 " + file.name;
-  }
-});
-
-/* CRLV */
-document.getElementById("inputCRLV").addEventListener("change", function(e){
-  const file = e.target.files[0];
-  if(!file) return;
-
-  const img = document.getElementById("imgCRLV");
-  const pdf = document.getElementById("pdfCRLV");
-
-  pdf.style.display = "none";
-
-  if(file.type.startsWith("image/")){
-    const reader = new FileReader();
-    reader.onload = e => img.src = e.target.result;
-    reader.readAsDataURL(file);
-  } else {
-    img.style.display = "none";
-    pdf.style.display = "block";
-    pdf.innerText = "📄 " + file.name;
-  }
-});
-
-/* OLHO */
-function toggleSenha(id, el){
-  const input = document.getElementById(id);
-
-  if(input.type === "password"){
-    input.type = "text";
-    el.classList.add("off");
-  }else{
-    input.type = "password";
-    el.classList.remove("off");
-  }
-}
-
-/* TELEFONE */
-document.getElementById("telefone").addEventListener("input", function(e){
-  let v = e.target.value.replace(/\D/g, "");
-  if(v.length > 11) v = v.slice(0,11);
-
-  if(v.length > 6){
-    v = v.replace(/^(\d{2})(\d{5})(\d{0,4})$/, "($1) $2-$3");
-  }else if(v.length > 2){
-    v = v.replace(/^(\d{2})(\d{0,5})$/, "($1) $2");
-  }else{
-    v = v.replace(/^(\d*)$/, "($1");
-  }
-
-  e.target.value = v;
-});
-
-</script>
 
 </body>
 </html>
