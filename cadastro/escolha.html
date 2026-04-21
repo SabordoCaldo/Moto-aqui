@@ -1,37 +1,58 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Escolha</title>
 
 <link rel="stylesheet" href="../css/style.css">
-<link rel="stylesheet" href="../css/escolha.css">
-
 </head>
 
 <body>
 
 <div class="container">
-  <div class="card">
+<div class="card">
 
-    <h1>Escolha seu cadastro</h1>
+<div style="text-align:center">
+  <img src="../assets/logo.png" style="width:200px;">
+  <p class="sub">App de mobilidade urbana</p>
+</div>
 
-    <button class="opcao" onclick="irCliente()">Sou Cliente</button>
-    <button class="opcao" onclick="irMotorista()">Sou Motorista</button>
+<h1>Escolha o Tipo</h1>
 
-  </div>
+<button class="btn" onclick="irCliente()">Sou Cliente</button>
+<button class="btn" onclick="irMotorista()" style="margin-top:10px;">Sou Motorista</button>
+
+<label style="margin-top:20px;">Cidade</label>
+<div class="input-box">
+<select style="width:100%;border:none;background:transparent;">
+<option>Selecione sua cidade</option>
+<option>Passos</option>
+</select>
+</div>
+
+<label>Termos e Privacidade</label>
+<textarea style="width:100%;height:120px;border-radius:10px;padding:10px;margin-bottom:20px;">
+Ao utilizar este aplicativo...
+</textarea>
+
+<div style="margin-bottom:25px;">
+<label><input type="checkbox"> Estou ciente e aceito os termos</label>
+</div>
+
+<button class="btn" style="opacity:0.5;">Continuar</button>
+
+<p style="text-align:center;"><a href="../index.html">Voltar</a></p>
+
+</div>
 </div>
 
 <script>
 function irCliente(){
-  window.location.href = "cliente.html";
+  location.href="cliente.html";
 }
-
 function irMotorista(){
-  window.location.href = "motorista.html";
+  location.href="motorista.html";
 }
 </script>
 
