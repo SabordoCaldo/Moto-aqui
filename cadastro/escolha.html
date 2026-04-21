@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Escolha</title>
+<title>Cadastro</title>
 
 <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -13,47 +13,190 @@
 <div class="container">
 <div class="card">
 
+<!-- LOGO -->
 <div style="text-align:center">
   <img src="../assets/logo.png" style="width:200px;">
-  <p class="sub">App de mobilidade urbana</p>
+  <p class="sub" style="color:#FFD600; font-size:20px;">
+    App de mobilidade urbana
+  </p>
 </div>
 
-<h1>Escolha o Tipo</h1>
+<!-- TÍTULO -->
+<h1 style="text-align:center;">CADASTRO</h1>
 
-<button class="btn" onclick="irCliente()">Sou Cliente</button>
-<button class="btn" onclick="irMotorista()" style="margin-top:10px;">Sou Motorista</button>
+<!-- BOTÕES -->
+<button class="btn" style="font-size:19px;" onclick="selecionarTipo('cliente')">
+  Sou Cliente
+</button>
 
-<label style="margin-top:20px;">Cidade</label>
+<button class="btn" style="font-size:19px;" onclick="selecionarTipo('motorista')">
+  Sou Motorista
+</button>
+
+<!-- CIDADE -->
+<label>Cidade</label>
+
 <div class="input-box">
-<select style="width:100%;border:none;background:transparent;">
-<option>Selecione sua cidade</option>
-<option>Passos</option>
+  <input type="text" id="cidadeBusca" placeholder="Digite sua cidade">
+</div>
+
+<select id="cidadeSelect" style="width:100%; padding:12px; border-radius:10px; margin-bottom:15px;">
+  <option value="">Selecione a cidade</option>
 </select>
-</div>
 
+<!-- TERMOS -->
 <label>Termos e Privacidade</label>
-<textarea style="width:100%;height:120px;border-radius:10px;padding:10px;margin-bottom:20px;">
-Ao utilizar este aplicativo...
-</textarea>
 
-<div style="margin-bottom:25px;">
-<label><input type="checkbox"> Estou ciente e aceito os termos</label>
+<textarea id="termosBox"
+style="width:100%; height:120px; border-radius:10px; padding:10px;"
+readonly></textarea>
+
+<!-- ACEITE -->
+<label style="display:block; margin-top:15px; font-weight:bold;">
+  <input type="checkbox" id="aceite">
+  ESTOU CIENTE E ACEITO OS TERMOS
+</label>
+
+<!-- BOTÃO -->
+<button class="btn" id="continuar"
+disabled style="margin-top:20px; opacity:0.5;">
+Continuar
+</button>
+
+<p style="text-align:center;margin-top:10px;">
+<a href="../index.html">Voltar</a>
+</p>
+
+</div>
 </div>
 
-<button class="btn" style="opacity:0.5;">Continuar</button>
+<!-- =========================
+SCRIPTS
+========================= -->
 
-<p style="text-align:center;"><a href="../index.html">Voltar</a></p>
+<!-- TERMOS -->
+<script src="../termos/termos.js"></script>
 
-</div>
-</div>
+<!-- CIDADES -->
+<script src="../cidades/passos.js"></script>
+<script src="../cidades/alpinopolis.js"></script>
+<script src="../cidades/bom-jesus.js"></script>
+<script src="../cidades/gloria.js"></script>
+<script src="../cidades/itau.js"></script>
 
 <script>
-function irCliente(){
-  location.href="cliente.html";
+
+let tipoSelecionado = "";
+let cidadeValida = false;
+
+/* =========================
+CARREGAR TERMOS
+========================= */
+if(window.termosTexto){
+  document.getElementById("termosBox").value = window.termosTexto;
 }
-function irMotorista(){
-  location.href="motorista.html";
+
+/* =========================
+CARREGAR CIDADES
+========================= */
+
+const cidades = [
+  {nome: "Passos", status: "ativo"},
+  {nome: "Alpinópolis", status: "indisponivel"},
+  {nome: "Bom Jesus", status: "indisponivel"},
+  {nome: "Glória", status: "indisponivel"},
+  {nome: "Itaú", status: "indisponivel"}
+];
+
+const select = document.getElementById("cidadeSelect");
+
+cidades.forEach(c => {
+  const opt = document.createElement("option");
+  opt.value = c.nome.toLowerCase();
+  opt.textContent = c.nome;
+  select.appendChild(opt);
+});
+
+/* =========================
+TIPO
+========================= */
+function selecionarTipo(tipo){
+  tipoSelecionado = tipo;
+  validar();
 }
+
+/* =========================
+CIDADE
+========================= */
+select.addEventListener("change", function(){
+
+  const cidade = this.value;
+
+  if(cidade === "passos"){
+    cidadeValida = true;
+  }else if(cidade){
+    cidadeValida = false;
+    alert("🚫 Serviço indisponível na sua cidade ainda");
+  }
+
+  validar();
+});
+
+/* =========================
+BUSCA
+========================= */
+document.getElementById("cidadeBusca").addEventListener("input", function(){
+
+  const busca = this.value.toLowerCase();
+
+  for(let i = 0; i < select.options.length; i++){
+    const opt = select.options[i];
+
+    if(opt.value.includes(busca)){
+      select.selectedIndex = i;
+      break;
+    }
+  }
+
+});
+
+/* =========================
+ACEITE
+========================= */
+document.getElementById("aceite").addEventListener("change", validar);
+
+/* =========================
+VALIDAÇÃO
+========================= */
+function validar(){
+
+  const aceito = document.getElementById("aceite").checked;
+  const btn = document.getElementById("continuar");
+
+  if(tipoSelecionado && cidadeValida && aceito){
+    btn.disabled = false;
+    btn.style.opacity = "1";
+  }else{
+    btn.disabled = true;
+    btn.style.opacity = "0.5";
+  }
+}
+
+/* =========================
+CONTINUAR
+========================= */
+document.getElementById("continuar").addEventListener("click", function(){
+
+  if(tipoSelecionado === "cliente"){
+    window.location.href = "cliente.html";
+  }
+
+  if(tipoSelecionado === "motorista"){
+    window.location.href = "motorista.html";
+  }
+
+});
+
 </script>
 
 </body>
