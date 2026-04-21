@@ -89,7 +89,8 @@ Continuar
 SCRIPTS
 ========================= -->
 
-<script src="../termos/termos.js"></script>
+<!-- 🔥 IMPORTANTE: força atualização -->
+<script src="../termos/termos.js?v=1"></script>
 
 <script>
 let tipoSelecionado = "";
@@ -98,13 +99,18 @@ let cidadeValida = false;
 /* =========================
 CARREGAR TERMOS (CORRIGIDO)
 ========================= */
-window.onload = function(){
+window.addEventListener("load", function(){
+
+  const box = document.getElementById("termosBox");
 
   if(window.termosApp){
-    document.getElementById("termosBox").innerHTML = window.termosApp.texto;
+    box.innerHTML = window.termosApp.texto;
+  }else{
+    box.innerHTML = "Erro ao carregar termos";
+    console.log("❌ termosApp não carregou");
   }
 
-};
+});
 
 /* =========================
 TIPO
