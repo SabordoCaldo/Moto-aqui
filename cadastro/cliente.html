@@ -99,10 +99,17 @@ BODY
 <!-- =========================
 SCRIPTS
 ========================= -->
-<script src="../js/cadastro.js"></script>
+
+<!-- ❌ REMOVIDO cadastro.js -->
+
+<!-- ✅ NOVO JS CORRETO -->
+<script src="../js/cliente.js"></script>
 
 <script>
 
+/*===========================
+FOTO PERFIL
+===========================*/
 function escolherFoto(){
   document.getElementById("inputFoto").click();
 }
@@ -124,9 +131,9 @@ document.getElementById("inputFoto").addEventListener("change", function(e){
 
 });
 
-// =========================
-// 🔥 MÁSCARA TELEFONE (CIRÚRGICO)
-// =========================
+/*===========================
+TELEFONE
+===========================*/
 document.getElementById("telefone").addEventListener("input", function(e){
 
   let v = e.target.value.replace(/\D/g, "");
